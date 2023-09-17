@@ -52,6 +52,10 @@ const updateTicker = async (item: QueueItem) => {
       newFile[parsed.key] = parsed.data;
     });
 
+    if (!fs.existsSync(PATHS.tickers)) {
+      fs.mkdirSync(PATHS.tickers, { recursive: true });
+    }
+
     fs.writeFileSync(PATHS.tickerFile(item.ticker), JSON.stringify(newFile));
 
     return newFile;

@@ -34,6 +34,9 @@ const updateTicker = async (item) => {
         response.forEach((parsed) => {
             newFile[parsed.key] = parsed.data;
         });
+        if (!node_fs_1.default.existsSync(constants_1.PATHS.tickers)) {
+            node_fs_1.default.mkdirSync(constants_1.PATHS.tickers, { recursive: true });
+        }
         node_fs_1.default.writeFileSync(constants_1.PATHS.tickerFile(item.ticker), JSON.stringify(newFile));
         return newFile;
     }
