@@ -52,10 +52,6 @@ const updateTicker = async (item: QueueItem) => {
       newFile[parsed.key] = parsed.data;
     });
 
-    if (!fs.existsSync(PATHS.tickers)) {
-      fs.mkdirSync(PATHS.tickers, { recursive: true });
-    }
-
     fs.writeFileSync(PATHS.tickerFile(item.ticker), JSON.stringify(newFile));
 
     return newFile;
@@ -91,6 +87,9 @@ const addTickerToUpdate: TickerToUpdateHandler = async (ticker) => {
  * know, usually already stored ones or new added by api call
  */
 const tickerUpdaterService = async () => {
+  if (!fs.existsSync(PATHS.tickers)) {
+    fs.mkdirSync(PATHS.tickers, { recursive: true });
+  }
   // get ticker from the queue removing it
   const nextTicker = queue.shift();
   if (nextTicker?.ticker) {
