@@ -94,6 +94,7 @@ const tickerUpdaterService = async () => {
 const loadStoredTickers = async () => {
     const storedTickers = node_fs_1.default.readdirSync(constants_1.PATHS.tickers);
     const sortedTickers = storedTickers
+        .filter((st) => node_path_1.default.basename(st) !== ".gitignore")
         .map((st) => {
         const stats = node_fs_1.default.statSync(node_path_1.default.join(constants_1.PATHS.tickerFile(node_path_1.default.basename(st, node_path_1.default.extname(st)))));
         return {
@@ -103,8 +104,6 @@ const loadStoredTickers = async () => {
     })
         .sort((a, b) => (0, date_fns_1.getUnixTime)(a.mtime) - (0, date_fns_1.getUnixTime)(b.mtime));
     sortedTickers.forEach((f) => {
-        if (node_path_1.default.extname(f.fileName) !== ".json")
-            return;
         queue.push({
             ticker: node_path_1.default.basename(f.fileName, node_path_1.default.extname(f.fileName)),
         });

@@ -122,6 +122,7 @@ const loadStoredTickers = async () => {
   const storedTickers = fs.readdirSync(PATHS.tickers);
 
   const sortedTickers = storedTickers
+    .filter((st) => path.basename(st) !== ".gitignore")
     .map((st) => {
       const stats = fs.statSync(
         path.join(PATHS.tickerFile(path.basename(st, path.extname(st))))
@@ -134,7 +135,6 @@ const loadStoredTickers = async () => {
     .sort((a, b) => getUnixTime(a.mtime) - getUnixTime(b.mtime));
 
   sortedTickers.forEach((f) => {
-    if (path.extname(f.fileName) !== ".json") return;
     queue.push({
       ticker: path.basename(f.fileName, path.extname(f.fileName)),
     });

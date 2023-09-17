@@ -12,22 +12,14 @@ function createDirs() {
 }
 createDirs();
 
-const init = async () => {
+const app = express();
+mapRoutes(app);
+const server = app.listen(4000, async () => {
+  const { port } = server.address() as { port: number };
+  console.log(`Server started on port: http://localhost:${port}`);
+
   await updater.loadStoredTickers();
   updater.tickerUpdaterService();
-
-  const app = express();
-
-  mapRoutes(app);
-
-  const server = app.listen(4000, () => {
-    const { port } = server.address() as { port: number };
-    console.log(`Server started on port: http://localhost:${port}`);
-  });
-
-  return app;
-};
-
-const app = init();
+});
 
 export default app;
