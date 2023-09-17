@@ -102,9 +102,13 @@ const loadStoredTickers = async () => {
         };
     })
         .sort((a, b) => (0, date_fns_1.getUnixTime)(a.mtime) - (0, date_fns_1.getUnixTime)(b.mtime));
-    sortedTickers.forEach((f) => queue.push({
-        ticker: node_path_1.default.basename(f.fileName, node_path_1.default.extname(f.fileName)),
-    }));
+    sortedTickers.forEach((f) => {
+        if (node_path_1.default.extname(f.fileName) !== ".json")
+            return;
+        queue.push({
+            ticker: node_path_1.default.basename(f.fileName, node_path_1.default.extname(f.fileName)),
+        });
+    });
     console.log(queue);
     return queue;
 };
