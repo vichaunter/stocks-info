@@ -79,11 +79,14 @@ const tickerUpdaterService = async () => {
         });
         // add it again at the end of the queue
         addTickerToUpdate(nextTicker.ticker);
+        tickerUpdaterService();
     }
     else {
         console.log(picocolors_1.default.yellow(`${picocolors_1.default.red("!!")}This is an incomplete ticker... deleted`));
+        setTimeout(() => {
+            tickerUpdaterService();
+        }, 60 * 1000);
     }
-    tickerUpdaterService();
 };
 /**
  * Load current stored tickers to be updated from the filesystem

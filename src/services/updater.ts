@@ -103,13 +103,16 @@ const tickerUpdaterService = async () => {
 
     // add it again at the end of the queue
     addTickerToUpdate(nextTicker.ticker);
+    tickerUpdaterService();
   } else {
     console.log(
       pc.yellow(`${pc.red("!!")}This is an incomplete ticker... deleted`)
     );
-  }
 
-  tickerUpdaterService();
+    setTimeout(() => {
+      tickerUpdaterService();
+    }, 60 * 1000);
+  }
 };
 
 /**
