@@ -3,7 +3,7 @@ import express from "express";
 import updater from "./services/updater";
 
 const init = async () => {
-  updater.loadStoredTickers();
+  await updater.loadStoredTickers();
   updater.tickerUpdaterService();
 
   const app = express();

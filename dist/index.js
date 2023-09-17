@@ -7,7 +7,7 @@ const routes_1 = require("./routes");
 const express_1 = __importDefault(require("express"));
 const updater_1 = __importDefault(require("./services/updater"));
 const init = async () => {
-    updater_1.default.loadStoredTickers();
+    await updater_1.default.loadStoredTickers();
     updater_1.default.tickerUpdaterService();
     const app = (0, express_1.default)();
     (0, routes_1.mapRoutes)(app);

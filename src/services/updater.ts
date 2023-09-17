@@ -143,6 +143,7 @@ const loadStoredTickers = async () => {
   );
 
   console.log(queue);
+  return queue;
 };
 
 export default {

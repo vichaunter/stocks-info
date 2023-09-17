@@ -109,6 +109,7 @@ const loadStoredTickers = async () => {
         ticker: node_path_1.default.basename(f.fileName, node_path_1.default.extname(f.fileName)),
     }));
     console.log(queue);
+    return queue;
 };
 exports.default = {
     addTickerToUpdate,
