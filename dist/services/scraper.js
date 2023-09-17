@@ -6,7 +6,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const puppeteer_1 = __importDefault(require("puppeteer"));
 const picocolors_1 = __importDefault(require("picocolors"));
 async function getPageSourceHtml(url) {
-    const browser = await puppeteer_1.default.launch({ headless: true }); // Set headless to false
+    const browser = await puppeteer_1.default.launch({
+        headless: true,
+        args: ["--no-sandbox"],
+    });
     try {
         const page = await browser.newPage();
         await page.setUserAgent("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36");

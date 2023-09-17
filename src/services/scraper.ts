@@ -2,7 +2,10 @@ import puppeteer from "puppeteer";
 import pc from "picocolors";
 
 async function getPageSourceHtml(url: string): Promise<string | undefined> {
-  const browser = await puppeteer.launch({ headless: true }); // Set headless to false
+  const browser = await puppeteer.launch({
+    headless: true,
+    args: ["--no-sandbox"],
+  });
 
   try {
     const page = await browser.newPage();
