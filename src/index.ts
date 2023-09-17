@@ -3,6 +3,9 @@ import express from "express";
 import updater from "./services/updater";
 
 const init = async () => {
+  updater.loadStoredTickers();
+  updater.tickerUpdaterService();
+
   const app = express();
 
   mapRoutes(app);
@@ -12,9 +15,9 @@ const init = async () => {
     console.log(`Server started on port: http://localhost:${port}`);
   });
 
-  return server;
+  return app;
 };
 
-updater.loadStoredTickers();
-updater.tickerUpdaterService();
-init();
+const app = init();
+
+export default app;

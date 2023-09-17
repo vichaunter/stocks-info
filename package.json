@@ -1,17 +1,20 @@
 {
-  "name": "dividendparser",
+  "name": "stocks-info",
   "version": "1.0.0",
-  "description": "",
+  "description": "The Stocks info api that everybody should have",
   "main": "src/index.ts",
   "scripts": {
-    "start": "ts-node ./src/index.ts --watch",
-    "start:bun": "bun src/index.ts --watch",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "concurrently \"onchange '.input.html' -- env-eg\" \"node nasdaqparser.js\"",
-    "fetch": "node nasdaqparser.js"
+    "start": "ts-node ./src/index.ts",
+    "build": "rimraf dist && tsc",
+    "ts:check": "tsc --project tsconfig.json",
+    "add-build": "git add dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "stocks",
+    "info"
+  ],
+  "author": "VicHaunter",
   "license": "ISC",
   "dependencies": {
     "axios": "^1.4.0",
@@ -31,9 +34,16 @@
     "puppeteer-core": "^21.2.1"
   },
   "devDependencies": {
-    "bun-types": "^1.0.2",
     "localtunnel": "^2.0.2",
     "ngrok": "^5.0.0-beta.2",
+    "pre-commit": "^1.2.2",
+    "rimraf": "^5.0.1",
+    "typescript": "^5.3.0-dev.20230917",
     "yargs": "^17.7.2"
-  }
+  },
+  "pre-commit": [
+    "ts:check",
+    "build",
+    "add-build"
+  ]
 }
