@@ -6,6 +6,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const routes_1 = require("./routes");
 const express_1 = __importDefault(require("express"));
 const updater_1 = __importDefault(require("./services/updater"));
+const node_fs_1 = __importDefault(require("node:fs"));
+const constants_1 = require("./constants");
+function createDirs() {
+    console.log({ PATHS: constants_1.PATHS });
+    if (!node_fs_1.default.existsSync(constants_1.PATHS.tickers)) {
+        node_fs_1.default.mkdirSync(constants_1.PATHS.tickers, { recursive: true });
+    }
+}
+createDirs();
 const init = async () => {
     await updater_1.default.loadStoredTickers();
     updater_1.default.tickerUpdaterService();

@@ -3,13 +3,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const date_fns_1 = require("date-fns");
 const node_fs_1 = __importDefault(require("node:fs"));
 const node_path_1 = __importDefault(require("node:path"));
-const scraper_1 = __importDefault(require("./scraper"));
-const constants_1 = require("../constants");
-const finviz_1 = __importDefault(require("./scraper/finviz"));
 const picocolors_1 = __importDefault(require("picocolors"));
-const date_fns_1 = require("date-fns");
+const constants_1 = require("../constants");
+const scraper_1 = __importDefault(require("./scraper"));
+const finviz_1 = __importDefault(require("./scraper/finviz"));
 const parsers = [finviz_1.default];
 const queue = [];
 const getTickerData = async (item, parser) => {
@@ -92,9 +92,6 @@ const tickerUpdaterService = async () => {
  * Load current stored tickers to be updated from the filesystem
  */
 const loadStoredTickers = async () => {
-    if (!node_fs_1.default.existsSync(constants_1.PATHS.tickers)) {
-        node_fs_1.default.mkdirSync(constants_1.PATHS.tickers, { recursive: true });
-    }
     const storedTickers = node_fs_1.default.readdirSync(constants_1.PATHS.tickers);
     const sortedTickers = storedTickers
         .map((st) => {

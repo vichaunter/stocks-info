@@ -1,10 +1,10 @@
+import { getUnixTime } from "date-fns";
 import fs from "node:fs";
 import path from "node:path";
-import scraper from "./scraper";
-import { PATHS } from "../constants";
-import finviz from "./scraper/finviz";
 import pc from "picocolors";
-import { getUnixTime } from "date-fns";
+import { PATHS } from "../constants";
+import scraper from "./scraper";
+import finviz from "./scraper/finviz";
 
 type TickerToUpdateHandler = (ticker: string) => void;
 type Parser = {
@@ -119,9 +119,6 @@ const tickerUpdaterService = async () => {
  * Load current stored tickers to be updated from the filesystem
  */
 const loadStoredTickers = async () => {
-  if (!fs.existsSync(PATHS.tickers)) {
-    fs.mkdirSync(PATHS.tickers, { recursive: true });
-  }
   const storedTickers = fs.readdirSync(PATHS.tickers);
 
   const sortedTickers = storedTickers
