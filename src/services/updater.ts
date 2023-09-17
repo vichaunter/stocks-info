@@ -87,9 +87,6 @@ const addTickerToUpdate: TickerToUpdateHandler = async (ticker) => {
  * know, usually already stored ones or new added by api call
  */
 const tickerUpdaterService = async () => {
-  if (!fs.existsSync(PATHS.tickers)) {
-    fs.mkdirSync(PATHS.tickers, { recursive: true });
-  }
   // get ticker from the queue removing it
   const nextTicker = queue.shift();
   if (nextTicker?.ticker) {
@@ -122,6 +119,9 @@ const tickerUpdaterService = async () => {
  * Load current stored tickers to be updated from the filesystem
  */
 const loadStoredTickers = async () => {
+  if (!fs.existsSync(PATHS.tickers)) {
+    fs.mkdirSync(PATHS.tickers, { recursive: true });
+  }
   const storedTickers = fs.readdirSync(PATHS.tickers);
 
   const sortedTickers = storedTickers
