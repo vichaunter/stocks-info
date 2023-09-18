@@ -23,9 +23,23 @@ class Database {
   }
 
   async getTickers() {
+    const list = await this.getTickersList();
+    const data = [];
+
+    for (let i = 0; i < list.length; i++) {
+      const ticker = list[i];
+      const tickerData = await this.getTicker(ticker);
+      tickerData && data.push(tickerData);
+    }
+
+    return data;
+  }
+
+  async getTickersList() {
     return fs
       .readdirSync(PATHS.tickers)
-      .filter((st) => path.basename(st) !== ".gitignore");
+      .filter((st) => path.basename(st) !== ".gitignore")
+      .map((filePath) => path.basename(filePath, path.extname(filePath)));
   }
 
   async saveTicker(ticker: TickerModel["ticker"], data: TickerModel["data"]) {

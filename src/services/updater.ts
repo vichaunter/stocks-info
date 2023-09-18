@@ -1,13 +1,10 @@
-import { getUnixTime } from "date-fns";
 import fs from "node:fs";
 import path from "node:path";
 import pc from "picocolors";
 import { PATHS } from "../constants";
+import TickerModel from "../models/tickerModel";
 import scraper from "./scraper";
 import finviz from "./scraper/finviz";
-import database from "./database";
-import tickerModel from "../models/tickerModel";
-import TickerModel from "../models/tickerModel";
 
 type TickerToUpdateHandler = (ticker: string) => void;
 type Parser = {
@@ -127,9 +124,9 @@ const tickerUpdaterService = async () => {
 const loadStoredTickers = async () => {
   const tickers = await TickerModel.getTickers();
 
-  tickers.forEach((f) => {
+  tickers.forEach((ticker) => {
     queue.push({
-      ticker: path.basename(f.fileName, path.extname(f.fileName)),
+      ticker,
     });
   });
 

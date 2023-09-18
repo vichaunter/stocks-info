@@ -1,9 +1,8 @@
-import { mapRoutes } from "./routes";
 import express from "express";
-import updater from "./services/updater";
-import fs from "node:fs";
-import { PATHS } from "./constants";
+import TickerModel from "./models/tickerModel";
+import { mapRoutes } from "./routes";
 import database from "./services/database";
+import updater from "./services/updater";
 
 database.init();
 
@@ -15,6 +14,8 @@ const server = app.listen(4000, async () => {
 
   await updater.loadStoredTickers();
   updater.tickerUpdaterService();
+
+  console.log(await TickerModel.getTickers());
 });
 
 export default app;

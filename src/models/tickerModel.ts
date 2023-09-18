@@ -37,16 +37,16 @@ class TickerModel {
     return;
   }
 
-  static async getTickers(sort: SortMode = SortMode.desc) {
-    const tickers = await database.getTickers();
+  static async getTickers(sort?: SortMode): Promise<string[]> {
+    const tickers = await database.getTickersList();
 
-    return this.sortByMTime(tickers, sort);
+    return sort ? this.sortByMTime(tickers, sort) : tickers;
   }
 
   static sortByMTime(
     tickers: TickerModel["ticker"][],
     mode: SortMode = SortMode.desc
-  ) {
+  ): string[] {
     return tickers
       .map((st) => {
         const stats = fs.statSync(
@@ -61,7 +61,8 @@ class TickerModel {
         mode === SortMode.desc
           ? getUnixTime(a.mtime) - getUnixTime(b.mtime)
           : getUnixTime(a.mtime) + getUnixTime(b.mtime)
-      );
+      )
+      .map((file) => file.fileName);
   }
 
   setData(data: TickerModel["data"]) {

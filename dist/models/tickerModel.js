@@ -31,9 +31,9 @@ class TickerModel {
             return data[k][key];
         return;
     }
-    static async getTickers(sort = types_1.SortMode.desc) {
-        const tickers = await database_1.default.getTickers();
-        return this.sortByMTime(tickers, sort);
+    static async getTickers(sort) {
+        const tickers = await database_1.default.getTickersList();
+        return sort ? this.sortByMTime(tickers, sort) : tickers;
     }
     static sortByMTime(tickers, mode = types_1.SortMode.desc) {
         return tickers
@@ -46,7 +46,8 @@ class TickerModel {
         })
             .sort((a, b) => mode === types_1.SortMode.desc
             ? (0, date_fns_1.getUnixTime)(a.mtime) - (0, date_fns_1.getUnixTime)(b.mtime)
-            : (0, date_fns_1.getUnixTime)(a.mtime) + (0, date_fns_1.getUnixTime)(b.mtime));
+            : (0, date_fns_1.getUnixTime)(a.mtime) + (0, date_fns_1.getUnixTime)(b.mtime))
+            .map((file) => file.fileName);
     }
     setData(data) {
         this.data = data;

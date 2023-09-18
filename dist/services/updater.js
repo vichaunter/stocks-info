@@ -4,12 +4,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const node_fs_1 = __importDefault(require("node:fs"));
-const node_path_1 = __importDefault(require("node:path"));
 const picocolors_1 = __importDefault(require("picocolors"));
 const constants_1 = require("../constants");
+const tickerModel_1 = __importDefault(require("../models/tickerModel"));
 const scraper_1 = __importDefault(require("./scraper"));
 const finviz_1 = __importDefault(require("./scraper/finviz"));
-const tickerModel_1 = __importDefault(require("../models/tickerModel"));
 const parsers = [finviz_1.default];
 const queue = [];
 const getTickerData = async (item, parser) => {
@@ -96,9 +95,9 @@ const tickerUpdaterService = async () => {
  */
 const loadStoredTickers = async () => {
     const tickers = await tickerModel_1.default.getTickers();
-    tickers.forEach((f) => {
+    tickers.forEach((ticker) => {
         queue.push({
-            ticker: node_path_1.default.basename(f.fileName, node_path_1.default.extname(f.fileName)),
+            ticker,
         });
     });
     console.log(queue);
