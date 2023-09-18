@@ -37,10 +37,14 @@ class TickerModel {
     return;
   }
 
-  static async getTickers(sort?: SortMode): Promise<string[]> {
+  static async getTickersList(sort?: SortMode): Promise<string[]> {
     const tickers = await database.getTickersList();
 
     return sort ? this.sortByMTime(tickers, sort) : tickers;
+  }
+
+  static async getTickers(): Promise<TickerModel["data"][]> {
+    return database.getTickers();
   }
 
   static sortByMTime(

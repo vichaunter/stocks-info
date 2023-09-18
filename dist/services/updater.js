@@ -94,7 +94,7 @@ const tickerUpdaterService = async () => {
  * Load current stored tickers to be updated from the filesystem
  */
 const loadStoredTickers = async () => {
-    const tickers = await tickerModel_1.default.getTickers();
+    const tickers = await tickerModel_1.default.getTickersList();
     tickers.forEach((ticker) => {
         queue.push({
             ticker,

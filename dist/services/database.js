@@ -25,7 +25,7 @@ class Database {
         for (let i = 0; i < list.length; i++) {
             const ticker = list[i];
             const tickerData = await this.getTicker(ticker);
-            tickerData && data.push(tickerData);
+            tickerData && data.push({ ticker, ...tickerData });
         }
         return data;
     }

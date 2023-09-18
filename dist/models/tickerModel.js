@@ -31,9 +31,12 @@ class TickerModel {
             return data[k][key];
         return;
     }
-    static async getTickers(sort) {
+    static async getTickersList(sort) {
         const tickers = await database_1.default.getTickersList();
         return sort ? this.sortByMTime(tickers, sort) : tickers;
+    }
+    static async getTickers() {
+        return database_1.default.getTickers();
     }
     static sortByMTime(tickers, mode = types_1.SortMode.desc) {
         return tickers

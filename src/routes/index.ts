@@ -1,4 +1,4 @@
-import ticker from "../controllers/tickerController";
+import tickerController from "../controllers/tickerController";
 
 import { Router, Request, Response } from "express";
 
@@ -19,7 +19,8 @@ export const notExistingRoute = (req: Request, res: Response): any => {
 };
 const router = Router();
 
-router.use("/ticker/:ticker/:key?", ticker.getTicker);
+router.use("/tickers", tickerController.getTickers);
+router.use("/ticker/:ticker/:key?", tickerController.getTicker);
 
 const mapRoutes = (app) => {
   app.use("/", router);

@@ -22,17 +22,17 @@ class Database {
     return JSON.parse(fs.readFileSync(tickerFile, "utf-8"));
   }
 
-  async getTickers() {
+  async getTickers(): Promise<TickerModel["data"][]> {
     const list = await this.getTickersList();
     const data = [];
 
     for (let i = 0; i < list.length; i++) {
       const ticker = list[i];
       const tickerData = await this.getTicker(ticker);
-      tickerData && data.push(tickerData);
+      tickerData && data.push({ ticker, ...tickerData });
     }
 
-    return data;
+    return data as TickerModel["data"][];
   }
 
   async getTickersList() {

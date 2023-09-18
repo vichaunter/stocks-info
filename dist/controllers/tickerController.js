@@ -30,5 +30,8 @@ const getTicker = (req, res) => {
         });
     });
 };
-const getTickers = (_, res) => { };
+const getTickers = async (_, res) => {
+    const tickers = await tickerModel_1.default.getTickers();
+    return res.status(200).send(tickers ?? []);
+};
 exports.default = { getTicker, getTickers };
