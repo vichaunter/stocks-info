@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.mapRoutes = exports.notExistingRoute = exports.errorWrapper = void 0;
-const ticker_1 = __importDefault(require("./ticker"));
+const tickerController_1 = __importDefault(require("../controllers/tickerController"));
 const express_1 = require("express");
 const errorWrapper = (res, cb) => {
     try {
@@ -24,7 +24,7 @@ const notExistingRoute = (req, res) => {
 };
 exports.notExistingRoute = notExistingRoute;
 const router = (0, express_1.Router)();
-router.use("/ticker/:ticker/:key?", ticker_1.default.getTicker);
+router.use("/ticker/:ticker/:key?", tickerController_1.default.getTicker);
 const mapRoutes = (app) => {
     app.use("/", router);
     app.use(exports.notExistingRoute);

@@ -1,6 +1,5 @@
-import fs from "node:fs";
-import { errorWrapper } from ".";
-import { PATHS } from "../constants";
+import TickerModel from "../models/tickerModel";
+import { errorWrapper } from "../routes";
 import updater from "../services/updater";
 import { RouteHanlder } from "../types";
 
@@ -8,11 +7,10 @@ const getTicker: RouteHanlder = (req, res) => {
   errorWrapper(res, async () => {
     let { ticker, key } = req.params as { ticker: string; key: string };
 
-    ticker = ticker.toUpperCase();
+    const tickerModel = new TickerModel(ticker);
+    const data = tickerModel.getData();
 
-    const tickerFile = PATHS.tickerFile(ticker);
-
-    if (!fs.existsSync(tickerFile)) {
+    if (!data) {
       updater.addTickerToUpdate(ticker);
       res.status(503).send({
         status: "unavailable",
@@ -21,19 +19,19 @@ const getTicker: RouteHanlder = (req, res) => {
       return;
     }
 
-    const file = JSON.parse(fs.readFileSync(tickerFile, "utf-8"));
-
-    const k = Object.keys(file).find((k) => key && file[k][key]);
-    if (k) {
-      return res.status(200).send(file[k][key]);
+    const keyData = tickerModel.getKeyData(key);
+    if (keyData) {
+      return res.status(200).send(keyData);
     }
 
     return res.status(200).send({
       status: "success",
       ticker,
-      data: file,
+      data,
     });
   });
 };
 
-export default { getTicker };
+const getTickers: RouteHanlder = (_, res) => {};
+
+export default { getTicker, getTickers };

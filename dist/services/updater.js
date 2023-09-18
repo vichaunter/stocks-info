@@ -3,13 +3,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const date_fns_1 = require("date-fns");
 const node_fs_1 = __importDefault(require("node:fs"));
 const node_path_1 = __importDefault(require("node:path"));
 const picocolors_1 = __importDefault(require("picocolors"));
 const constants_1 = require("../constants");
 const scraper_1 = __importDefault(require("./scraper"));
 const finviz_1 = __importDefault(require("./scraper/finviz"));
+const tickerModel_1 = __importDefault(require("../models/tickerModel"));
 const parsers = [finviz_1.default];
 const queue = [];
 const getTickerData = async (item, parser) => {
@@ -30,12 +30,14 @@ const updateTicker = async (item) => {
             });
         });
         const response = await Promise.all(promises);
-        const newFile = {};
+        const data = {};
         response.forEach((parsed) => {
-            newFile[parsed.key] = parsed.data;
+            data[parsed.key] = parsed.data;
         });
-        node_fs_1.default.writeFileSync(constants_1.PATHS.tickerFile(item.ticker), JSON.stringify(newFile));
-        return newFile;
+        const ticker = new tickerModel_1.default(item.ticker);
+        ticker.setData(data);
+        const saved = ticker.saveTicker();
+        return data;
     }
     catch (e) {
         // skip current update in any error
@@ -48,6 +50,7 @@ const updateTicker = async (item) => {
  * Adds a new ticker to be retrieved
  */
 const addTickerToUpdate = async (ticker) => {
+    ticker = ticker.toUpperCase();
     if (queue.find((q) => q.ticker === ticker))
         return;
     const tickerTask = {
@@ -92,18 +95,8 @@ const tickerUpdaterService = async () => {
  * Load current stored tickers to be updated from the filesystem
  */
 const loadStoredTickers = async () => {
-    const storedTickers = node_fs_1.default.readdirSync(constants_1.PATHS.tickers);
-    const sortedTickers = storedTickers
-        .filter((st) => node_path_1.default.basename(st) !== ".gitignore")
-        .map((st) => {
-        const stats = node_fs_1.default.statSync(node_path_1.default.join(constants_1.PATHS.tickerFile(node_path_1.default.basename(st, node_path_1.default.extname(st)))));
-        return {
-            ...stats,
-            fileName: st,
-        };
-    })
-        .sort((a, b) => (0, date_fns_1.getUnixTime)(a.mtime) - (0, date_fns_1.getUnixTime)(b.mtime));
-    sortedTickers.forEach((f) => {
+    const tickers = await tickerModel_1.default.getTickers();
+    tickers.forEach((f) => {
         queue.push({
             ticker: node_path_1.default.basename(f.fileName, node_path_1.default.extname(f.fileName)),
         });

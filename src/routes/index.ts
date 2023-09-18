@@ -1,4 +1,5 @@
-import ticker from "./ticker";
+import ticker from "../controllers/tickerController";
+
 import { Router, Request, Response } from "express";
 
 export const errorWrapper = (res: Response, cb: () => {}) => {

@@ -3,14 +3,9 @@ import express from "express";
 import updater from "./services/updater";
 import fs from "node:fs";
 import { PATHS } from "./constants";
+import database from "./services/database";
 
-function createDirs() {
-  console.log({ PATHS });
-  if (!fs.existsSync(PATHS.tickers)) {
-    fs.mkdirSync(PATHS.tickers, { recursive: true });
-  }
-}
-createDirs();
+database.init();
 
 const app = express();
 mapRoutes(app);

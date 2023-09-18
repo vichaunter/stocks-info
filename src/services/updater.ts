@@ -5,6 +5,9 @@ import pc from "picocolors";
 import { PATHS } from "../constants";
 import scraper from "./scraper";
 import finviz from "./scraper/finviz";
+import database from "./database";
+import tickerModel from "../models/tickerModel";
+import TickerModel from "../models/tickerModel";
 
 type TickerToUpdateHandler = (ticker: string) => void;
 type Parser = {
@@ -47,14 +50,16 @@ const updateTicker = async (item: QueueItem) => {
 
     const response = await Promise.all(promises);
 
-    const newFile = {};
+    const data = {};
     response.forEach((parsed) => {
-      newFile[parsed.key] = parsed.data;
+      data[parsed.key] = parsed.data;
     });
 
-    fs.writeFileSync(PATHS.tickerFile(item.ticker), JSON.stringify(newFile));
+    const ticker = new TickerModel(item.ticker);
+    ticker.setData(data);
+    const saved = ticker.saveTicker();
 
-    return newFile;
+    return data;
   } catch (e) {
     // skip current update in any error
     console.log(pc.bgYellow("!! Skipping ticker"));
@@ -68,6 +73,7 @@ const updateTicker = async (item: QueueItem) => {
  * Adds a new ticker to be retrieved
  */
 const addTickerToUpdate: TickerToUpdateHandler = async (ticker) => {
+  ticker = ticker.toUpperCase();
   if (queue.find((q) => q.ticker === ticker)) return;
 
   const tickerTask = {
@@ -119,22 +125,9 @@ const tickerUpdaterService = async () => {
  * Load current stored tickers to be updated from the filesystem
  */
 const loadStoredTickers = async () => {
-  const storedTickers = fs.readdirSync(PATHS.tickers);
+  const tickers = await TickerModel.getTickers();
 
-  const sortedTickers = storedTickers
-    .filter((st) => path.basename(st) !== ".gitignore")
-    .map((st) => {
-      const stats = fs.statSync(
-        path.join(PATHS.tickerFile(path.basename(st, path.extname(st))))
-      );
-      return {
-        ...stats,
-        fileName: st,
-      };
-    })
-    .sort((a, b) => getUnixTime(a.mtime) - getUnixTime(b.mtime));
-
-  sortedTickers.forEach((f) => {
+  tickers.forEach((f) => {
     queue.push({
       ticker: path.basename(f.fileName, path.extname(f.fileName)),
     });
