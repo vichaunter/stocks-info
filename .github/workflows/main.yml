@@ -5,7 +5,7 @@ jobs:
   #   ...
   deploy:
     name: "Deploy to staging"
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     # if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     # needs: test
     steps:
@@ -27,7 +27,7 @@ jobs:
           SSH_HOST: ${{ secrets.HOST }}
 
       - name: Test remote environment
-        run: ssh staging 'pwd'
+        run: ssh staging 'cd /opt/services/stocks-info/ && pwd'
 
       # - name: Check out the source
       #   run: ssh staging 'cd my-application && git fetch && git reset --hard origin/master'
