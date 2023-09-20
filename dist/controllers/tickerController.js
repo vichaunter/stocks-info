@@ -10,7 +10,7 @@ const getTicker = (req, res) => {
     (0, routes_1.errorWrapper)(res, async () => {
         let { ticker, key } = req.params;
         const tickerModel = new tickerModel_1.default(ticker);
-        const data = tickerModel.getData();
+        const data = await tickerModel.getData();
         if (!data) {
             updater_1.default.addTickerToUpdate(ticker);
             res.status(503).send({

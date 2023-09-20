@@ -30,6 +30,7 @@ class TickerModel {
 
   async getKeyData(key: string): Promise<string | undefined> {
     const data = await this.getData();
+    if (!data || !key) return;
 
     const k = Object.keys(data).find((k) => key && data[k][key]);
     if (data[k]?.[key]) return data[k][key];

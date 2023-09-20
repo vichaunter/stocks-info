@@ -8,7 +8,7 @@ const getTicker: RouteHanlder = (req, res) => {
     let { ticker, key } = req.params as { ticker: string; key: string };
 
     const tickerModel = new TickerModel(ticker);
-    const data = tickerModel.getData();
+    const data = await tickerModel.getData();
 
     if (!data) {
       updater.addTickerToUpdate(ticker);
