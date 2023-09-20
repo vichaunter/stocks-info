@@ -18,7 +18,7 @@ class TickerModel {
     invalidate() {
         this.data = undefined;
     }
-    async getData(key) {
+    async getData() {
         if (!this.data) {
             this.data = await database_1.default.getTicker(this.ticker);
         }

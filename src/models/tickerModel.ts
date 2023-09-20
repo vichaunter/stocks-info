@@ -20,7 +20,7 @@ class TickerModel {
     this.data = undefined;
   }
 
-  async getData(key?: string) {
+  async getData() {
     if (!this.data) {
       this.data = await database.getTicker(this.ticker);
     }

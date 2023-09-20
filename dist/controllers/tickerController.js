@@ -19,7 +19,7 @@ const getTicker = (req, res) => {
             });
             return;
         }
-        const keyData = tickerModel.getKeyData(key);
+        const keyData = key && tickerModel.getKeyData(key);
         if (keyData) {
             return res.status(200).send(keyData);
         }
