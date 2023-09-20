@@ -9,35 +9,17 @@ jobs:
     # if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     # needs: test
     steps:
-      - name: Configure SSH
-        run: |
-          mkdir -p ~/.ssh/
-          echo "$SSH_KEY" > ~/.ssh/staging.key
-          chmod 600 ~/.ssh/staging.key
-          cat >>~/.ssh/config <<END
-          Host staging
-            HostName $SSH_HOST
-            User $SSH_USER
-            IdentityFile ~/.ssh/staging.key
-            StrictHostKeyChecking no
-          END
-        env:
-          SSH_USER: ${{ secrets.USERNAME }}
-          SSH_KEY: ${{ secrets.KEY }}
-          SSH_HOST: ${{ secrets.HOST }}
-
-      - name: Stop server
-        run: ssh -t staging 'pm2 stop stocks-info'
-
-      - name: Clone project and stop server
-        run: ssh -t staging 'rm -rf /tmp/stocks-info && cd /tmp && git clone https://github.com/vichaunter/stocks-info.git'
-
-      - name: Copy files
-        run: ssh -t staging 'rsync -r /tmp/stocks-info/dist/ /opt/services/stocks-info/dist'
-
-      - name: Install packages
-        run: ssh -t staging 'cd /opt/services/stocks-info/ && yarn'
-        
-      - name: Start the server
-        if: ${{ always() }}
-        run: ssh -t staging 'pm2 start stodks-info'
+    - name: multiple command
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.KEY }}
+        script: |
+          pm2 stop stocks-info
+          rm -rf /tmp/stocks-info 
+          cd /tmp && git clone https://github.com/vichaunter/stocks-info.git
+          rsync -r /tmp/stocks-info/dist/ /opt/services/stocks-info/dist
+          cd /opt/services/stocks-info/
+          yarn install --ignore-engines
+          pm2 start stocks-info
