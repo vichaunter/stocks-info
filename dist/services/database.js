@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const node_fs_1 = __importDefault(require("node:fs"));
 const node_path_1 = __importDefault(require("node:path"));
+const picocolors_1 = __importDefault(require("picocolors"));
 const constants_1 = require("../constants");
 class Database {
     async init() {
@@ -37,6 +38,8 @@ class Database {
     }
     async saveTicker(ticker, data) {
         try {
+            if (Object.keys(data).length < 1)
+                throw Error(picocolors_1.default.yellow(`Data was not provider to save [${ticker}]`));
             node_fs_1.default.writeFileSync(constants_1.PATHS.tickerFile(ticker), JSON.stringify(data));
             return true;
         }

@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import pc from "picocolors";
 import { PATHS } from "../constants";
 import TickerModel from "../models/tickerModel";
 
@@ -44,6 +45,9 @@ class Database {
 
   async saveTicker(ticker: TickerModel["ticker"], data: TickerModel["data"]) {
     try {
+      if (Object.keys(data).length < 1)
+        throw Error(pc.yellow(`Data was not provider to save [${ticker}]`));
+
       fs.writeFileSync(PATHS.tickerFile(ticker), JSON.stringify(data));
 
       return true;
