@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+const tickerModel_1 = __importDefault(require("./models/tickerModel"));
 const routes_1 = require("./routes");
 const database_1 = __importDefault(require("./services/database"));
 const updater_1 = __importDefault(require("./services/updater"));
@@ -15,6 +16,6 @@ const server = app.listen(4000, async () => {
     console.log(`Server started on port: http://localhost:${port}`);
     await updater_1.default.loadStoredTickers();
     updater_1.default.tickerUpdaterService();
-    // console.log(await TickerModel.getTickers());
+    console.log(await tickerModel_1.default.getTickers());
 });
 exports.default = app;
