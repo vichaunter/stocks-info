@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/vichaunter/stocks-info/compare/v1.0.0...v1.1.0) (2023-09-22)
+
+
+### Features
+
+* **services:** only one browser instance ([a6128ef](https://github.com/vichaunter/stocks-info/commit/a6128efd80b67f7d7c0ba91afc1d620ad623baf8))
+
 # 1.0.0 (2023-09-22)
 
 
