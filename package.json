@@ -1,8 +1,9 @@
 {
   "name": "stocks-info",
-  "version": "0.0.0-semantic-release",
+  "version": "1.0.0",
   "description": "The Stocks info api that everybody should have",
   "main": "src/index.ts",
+  "private": true,
   "scripts": {
     "start": "ts-node ./src/index.ts",
     "build": "rimraf dist && tsc",
