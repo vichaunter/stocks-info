@@ -25,6 +25,7 @@ jobs:
   deploy:
     name: "Deploy to staging"
     runs-on: self-hosted
+    needs: versioning
     # if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     # needs: test
     steps:
