@@ -15,7 +15,7 @@ const server = app.listen(4000, async () => {
   await updater.loadStoredTickers();
   updater.tickerUpdaterService();
 
-  console.log(await TickerModel.getTickers());
+  // console.log(await TickerModel.getTickers());
 });
 
 export default app;
