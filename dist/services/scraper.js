@@ -4,9 +4,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const picocolors_1 = __importDefault(require("picocolors"));
-const browser_1 = require("./scraper/browser");
+const puppeteer_1 = __importDefault(require("puppeteer"));
 async function getPageSourceHtml(url) {
-    const browserInstance = await browser_1.browser.getInstance();
+    const browserInstance = await puppeteer_1.default.launch({
+        headless: true,
+        args: ["--no-sandbox"],
+    });
     try {
         const page = await browserInstance.newPage();
         await page.setUserAgent("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36");
@@ -17,6 +20,9 @@ async function getPageSourceHtml(url) {
     }
     catch (error) {
         console.log(`${picocolors_1.default.red("Error occured:")} ${error.message}`);
+    }
+    finally {
+        await browserInstance.close();
     }
     return;
 }

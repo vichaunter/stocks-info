@@ -1,8 +1,11 @@
 import pc from "picocolors";
-import { browser } from "./scraper/browser";
+import puppeteer from "puppeteer";
 
 async function getPageSourceHtml(url: string): Promise<string | undefined> {
-  const browserInstance = await browser.getInstance();
+  const browserInstance = await puppeteer.launch({
+    headless: true,
+    args: ["--no-sandbox"],
+  });
 
   try {
     const page = await browserInstance.newPage();
@@ -18,6 +21,8 @@ async function getPageSourceHtml(url: string): Promise<string | undefined> {
     return pageSource;
   } catch (error) {
     console.log(`${pc.red("Error occured:")} ${error.message}`);
+  } finally {
+    await browserInstance.close();
   }
 
   return;
