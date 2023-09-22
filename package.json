@@ -1,6 +1,6 @@
 {
   "name": "stocks-info",
-  "version": "1.0.0",
+  "version": "0.0.0-semantic-release",
   "description": "The Stocks info api that everybody should have",
   "main": "src/index.ts",
   "scripts": {
