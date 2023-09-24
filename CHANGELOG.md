@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/vichaunter/stocks-info/compare/v1.1.0...v1.2.0) (2023-09-23)
+
+
+### Features
+
+* **database:** make handlers use multiple database types ([933304d](https://github.com/vichaunter/stocks-info/commit/933304dddcfe01b9ac275c0a8bb7017c538946ea))
+
 # [1.1.0](https://github.com/vichaunter/stocks-info/compare/v1.0.0...v1.1.0) (2023-09-22)
 
 
