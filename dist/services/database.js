@@ -23,5 +23,5 @@ class Database extends DatabaseHandler_1.default {
         return this.handler.saveTicker(ticker, data);
     }
 }
-const database = new Database(new index_1.handlers[process.env.DB_HANDLER]());
+const database = new Database(new index_1.handlers[process.env.DB_HANDLER ?? "filesystem"]());
 exports.default = database;
