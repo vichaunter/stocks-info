@@ -1,5 +1,5 @@
+import "dotenv/config";
 import express from "express";
-import TickerModel from "./models/tickerModel";
 import { mapRoutes } from "./routes";
 import database from "./services/database";
 import updater from "./services/updater";
