@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/vichaunter/stocks-info/compare/v1.2.0...v1.2.1) (2023-09-24)
+
+
+### Bug Fixes
+
+* **db:** default filesystem database ([8fb4533](https://github.com/vichaunter/stocks-info/commit/8fb45339eee17a3db16d7d59102ee96cf6a7a554))
+
 # [1.2.0](https://github.com/vichaunter/stocks-info/compare/v1.1.0...v1.2.0) (2023-09-23)
 
 
