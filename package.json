@@ -10,6 +10,7 @@
     "ts:check": "yarn tsc --project tsconfig.json",
     "add-build": "git add dist",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "sh ./scripts/deploy.sh",
     "db:generate": "yarn prisma generate",
     "db:seed": "node ./database/seed/seed.js"
   },
