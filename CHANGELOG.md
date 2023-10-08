@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/vichaunter/stocks-info/compare/v1.2.1...v1.3.0) (2023-10-08)
+
+
+### Features
+
+* **db:** move filesystem to database (bw compatible) ([ce1593c](https://github.com/vichaunter/stocks-info/commit/ce1593ce5a3adb01f1b848b542c0e0d1cc739c69))
+
 ## [1.2.1](https://github.com/vichaunter/stocks-info/compare/v1.2.0...v1.2.1) (2023-09-24)
 
 
