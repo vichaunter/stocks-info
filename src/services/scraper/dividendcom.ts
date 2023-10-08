@@ -2,10 +2,11 @@ import { load as cheerioLoad } from "cheerio";
 import pc from "picocolors";
 import { camelizeText } from "../../utils";
 
-const name = "finviz";
-const baseurl = `https://finviz.com`;
-
-const validKeys = ["price", "dividend", "dividendYield"];
+const name = "dividend.com";
+const baseurl = `https://www.dividend.com`;
+const endpoints = {
+  ARR: `${baseurl}/stocks/financials/specialty-finance/mortgage-finance/arr-armour-residential-reit-inc/`,
+};
 
 const parser = (source: string): Record<string, string> => {
   if (!source) {
@@ -27,7 +28,6 @@ const parser = (source: string): Record<string, string> => {
     for (let i = 0; i < rowData.length; i += 2) {
       const key = rowData[i] === "Dividend %" ? "DividendYield" : rowData[i];
       const camelKey = camelizeText(key);
-      if (!validKeys.includes(camelKey)) continue;
       mapped[camelKey] = rowData[i + 1];
     }
     rows.push(rowData);
@@ -39,6 +39,7 @@ const parser = (source: string): Record<string, string> => {
 const tickerUrl = (ticker: string) => `${baseurl}/quote.ashx?t=${ticker}`;
 
 export default {
+  endpoints,
   name,
   baseurl,
   tickerUrl,

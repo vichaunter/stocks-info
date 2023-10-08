@@ -3,40 +3,38 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const node_fs_1 = __importDefault(require("node:fs"));
 const picocolors_1 = __importDefault(require("picocolors"));
-const constants_1 = require("../constants");
 const tickerModel_1 = __importDefault(require("../models/tickerModel"));
+const database_1 = __importDefault(require("./database"));
 const scraper_1 = __importDefault(require("./scraper"));
 const finviz_1 = __importDefault(require("./scraper/finviz"));
-const parsers = [finviz_1.default];
+const parsers = { finviz: finviz_1.default };
 const queue = [];
-const getTickerData = async (item, parser) => {
-    const source = await scraper_1.default.getPageSourceHtml(parser.tickerUrl(item.ticker));
+const getTickerData = async (url, parser) => {
+    const source = await scraper_1.default.getPageSourceHtml(url);
     const parsed = parser.parser(source);
-    console.log(parsed, picocolors_1.default.blue(parser.name), picocolors_1.default.green(item.ticker));
+    console.log(parsed, picocolors_1.default.blue(parser.name), picocolors_1.default.green(url));
     return parsed;
 };
 const updateTicker = async (item) => {
     try {
-        const promises = parsers.map((parser) => {
+        const promises = item.tickerHandlers.handlers.map((handler) => {
             return new Promise(async (resolve, reject) => {
-                const data = await getTickerData(item, parser);
+                const parser = parsers?.[handler.id];
+                if (!handler.enabled || !parser || !handler.url)
+                    return reject();
+                const data = await getTickerData(handler.url, parser);
                 if (data) {
                     return resolve({ key: parser.name, data });
                 }
                 return reject();
             });
         });
-        const response = await Promise.all(promises);
-        const data = {};
+        const response = await Promise.all(promises.flat());
         response.forEach((parsed) => {
-            data[parsed.key] = parsed.data;
+            parsed.data && item.setData(parsed.data);
         });
-        const ticker = new tickerModel_1.default(item.ticker);
-        ticker.setData(data);
-        const saved = ticker.saveTicker();
-        return data;
+        return item.saveTicker();
     }
     catch (e) {
         // skip current update in any error
@@ -49,18 +47,14 @@ const updateTicker = async (item) => {
  * Adds a new ticker to be retrieved
  */
 const addTickerToUpdate = async (ticker) => {
-    ticker = ticker.toUpperCase();
-    if (queue.find((q) => q.ticker === ticker))
+    if (queue.find((q) => q.symbol === ticker.symbol))
         return;
-    const tickerTask = {
-        ticker,
-    };
-    const tickerFile = constants_1.PATHS.tickerFile(ticker);
-    if (!node_fs_1.default.existsSync(tickerFile)) {
-        queue.unshift(tickerTask);
+    const dbTicker = database_1.default.getTicker(ticker.symbol);
+    if (!dbTicker) {
+        queue.unshift(ticker);
     }
     else {
-        queue.push(tickerTask);
+        queue.push(ticker);
     }
 };
 /**
@@ -70,8 +64,8 @@ const addTickerToUpdate = async (ticker) => {
 const tickerUpdaterService = async () => {
     // get ticker from the queue removing it
     const nextTicker = queue.shift();
-    if (nextTicker?.ticker) {
-        console.log(`let's update the ticker:`, nextTicker.ticker);
+    if (nextTicker?.symbol) {
+        console.log(picocolors_1.default.blue(`let's update the ticker: ${nextTicker.symbol}`));
         await updateTicker(nextTicker);
         // let's do one each xx seconds
         await new Promise((resolve, reject) => {
@@ -80,7 +74,7 @@ const tickerUpdaterService = async () => {
             }, (Math.random() * 5 + 10) * 1000);
         });
         // add it again at the end of the queue
-        addTickerToUpdate(nextTicker.ticker);
+        addTickerToUpdate(nextTicker);
         tickerUpdaterService();
     }
     else {
@@ -94,13 +88,12 @@ const tickerUpdaterService = async () => {
  * Load current stored tickers to be updated from the filesystem
  */
 const loadStoredTickers = async () => {
-    const tickers = await tickerModel_1.default.getTickersList();
+    const tickers = await tickerModel_1.default.getTickers();
+    console.log("TICKERS", tickers);
     tickers.forEach((ticker) => {
-        queue.push({
-            ticker,
-        });
+        queue.push(ticker);
     });
-    console.log(queue);
+    // console.log(queue);
     return queue;
 };
 exports.default = {

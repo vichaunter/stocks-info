@@ -1,31 +1,41 @@
-import { getUnixTime } from "date-fns";
-import fs from "node:fs";
-import path from "node:path";
+import { Ticker, TickerData } from "@prisma/client";
 import pc from "picocolors";
-import { PATHS } from "../constants";
 import database from "../services/database";
 import { SortMode } from "../types";
+import { DbTickerHandlers } from "../services/database/DatabaseHandler";
+
+export type TickerFlatData = {
+  id: string;
+  symbol: string;
+  data: {
+    price: string;
+    dividend: string;
+    dividendYield: string;
+  };
+};
 
 class TickerModel {
-  ticker: string;
-  data: Record<string, string>;
+  id: string; // dbId
+  symbol: string;
+  tickerHandlers: DbTickerHandlers;
+  tickerData: TickerData | null;
 
-  constructor(ticker: string) {
-    this.ticker = ticker.toUpperCase();
+  constructor(ticker: Ticker) {
+    Object.assign(this, ticker);
 
     return this;
   }
 
   invalidate() {
-    this.data = undefined;
+    this.tickerData = undefined;
   }
 
   async getData() {
-    if (!this.data) {
-      this.data = await database.getTicker(this.ticker);
-    }
+    // if (!this.data) {
+    //   this.data = await database.getTicker(this.symbol);
+    // }
 
-    return this.data;
+    return this.tickerData;
   }
 
   async getKeyData(key: string): Promise<string | undefined> {
@@ -38,57 +48,63 @@ class TickerModel {
     return;
   }
 
+  async getHandlers(): Promise<any[] | null> {
+    return database.getTickerHandlers(this.id);
+  }
+
   static async getTickersList(sort?: SortMode): Promise<string[]> {
     const tickers = await database.getTickersList();
 
-    return sort ? this.sortByMTime(tickers, sort) : tickers;
+    return tickers;
+    // return sort ? this.sortByMTime(tickers, sort) : tickers;
   }
 
-  static async getTickers(): Promise<TickerModel["data"][]> {
+  static async getTickers(): Promise<TickerModel[] | null> {
     return database.getTickers();
   }
 
-  static sortByMTime(
-    tickers: TickerModel["ticker"][],
-    mode: SortMode = SortMode.desc
-  ): string[] {
-    return tickers
-      .map((st) => {
-        const stats = fs.statSync(
-          path.join(PATHS.tickerFile(path.basename(st, path.extname(st))))
-        );
-        return {
-          ...stats,
-          fileName: st,
-        };
-      })
-      .sort((a, b) =>
-        mode === SortMode.desc
-          ? getUnixTime(a.mtime) - getUnixTime(b.mtime)
-          : getUnixTime(a.mtime) + getUnixTime(b.mtime)
-      )
-      .map((file) => file.fileName);
+  static async getTickersFlatData(): Promise<TickerFlatData[] | null> {
+    return database.getTickersFlatData();
   }
 
-  setData(data: TickerModel["data"]) {
-    this.data = data;
+  // static sortByMTime(
+  //   tickers: TickerModel["symbol"][],
+  //   mode: SortMode = SortMode.desc
+  // ): string[] {
+  //   return tickers
+  //     .map((st) => {
+  //       const stats = fs.statSync(
+  //         path.join(PATHS.tickerFile(path.basename(st, path.extname(st))))
+  //       );
+  //       return {
+  //         ...stats,
+  //         fileName: st,
+  //       };
+  //     })
+  //     .sort((a, b) =>
+  //       mode === SortMode.desc
+  //         ? getUnixTime(a.mtime) - getUnixTime(b.mtime)
+  //         : getUnixTime(a.mtime) + getUnixTime(b.mtime)
+  //     )
+  //     .map((file) => file.fileName);
+  // }
+
+  setData(data: TickerModel["tickerData"]) {
+    this.tickerData = { ...this.tickerData, ...data };
 
     return this;
   }
 
   saveTicker() {
     try {
-      if (this.ticker && this.data) {
-        fs.writeFileSync(
-          PATHS.tickerFile(this.ticker),
-          JSON.stringify(this.data)
-        );
+      if (this.symbol && this.id && this.tickerData) {
+        database.saveTicker(this);
       }
 
       return true;
     } catch (e) {
       console.log(
-        pc.bgRed(`Problem writing file for ticker [${this.ticker}]`),
+        pc.bgRed(`Problem writing file for ticker [${this.symbol}]`),
         e
       );
     }

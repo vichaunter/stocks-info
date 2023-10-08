@@ -3,11 +3,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const picocolors_1 = __importDefault(require("picocolors"));
 const index_1 = require("./database/index");
-const DatabaseHandler_1 = __importDefault(require("./database/DatabaseHandler"));
-class Database extends DatabaseHandler_1.default {
+class Database {
+    constructor(handler) {
+        this.handler = handler;
+    }
     init() {
-        console.log(this.handler);
+        console.log(picocolors_1.default.blue("db init"));
         this.handler.init();
     }
     async getTicker(ticker) {
@@ -16,12 +19,18 @@ class Database extends DatabaseHandler_1.default {
     async getTickers() {
         return this.handler.getTickers();
     }
+    async getTickersFlatData() {
+        return this.handler.getTickersFlatData();
+    }
     async getTickersList() {
         return this.handler.getTickersList();
     }
-    async saveTicker(ticker, data) {
-        return this.handler.saveTicker(ticker, data);
+    async getTickerHandlers(tickerId) {
+        return (await this.handler.getTickerHandlers(tickerId));
+    }
+    async saveTicker(ticker) {
+        return this.handler.saveTicker(ticker);
     }
 }
-const database = new Database(new index_1.handlers[process.env.DB_HANDLER ?? "filesystem"]());
+const database = new Database(new index_1.handlers[process.env.DB_HANDLER]());
 exports.default = database;

@@ -1,5 +1,3 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-class DatabaseHandler {
-}
-exports.default = DatabaseHandler;
+//https://www.fool.com.au/tickers/asx-pls/

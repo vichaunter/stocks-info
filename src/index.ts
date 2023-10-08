@@ -1,9 +1,11 @@
-import "dotenv/config";
+import dotenv from "dotenv";
 import express from "express";
 import { mapRoutes } from "./routes";
 import database from "./services/database";
 import updater from "./services/updater";
+import path from "node:path";
 
+dotenv.config({ path: path.join("..", ".env") });
 database.init();
 
 const app = express();

@@ -1,41 +1,39 @@
-import fs from "node:fs";
-import path from "node:path";
 import pc from "picocolors";
-import { PATHS } from "../constants";
 import TickerModel from "../models/tickerModel";
+import database from "./database";
 import scraper from "./scraper";
 import finviz from "./scraper/finviz";
 
-type TickerToUpdateHandler = (ticker: string) => void;
+type TickerToUpdateHandler = (ticker: TickerModel) => void;
 type Parser = {
   name: string;
   baseurl: string;
-  tickerUrl: (ticker: string) => string;
   parser: (source: string) => Record<string, string>;
 };
 
-export type QueueItem = {
-  ticker: string;
-};
+export type QueueItem = TickerModel;
 
-const parsers: Parser[] = [finviz];
+const parsers: Record<string, Parser> = { finviz };
 const queue: QueueItem[] = [];
 
-const getTickerData = async (item: QueueItem, parser: Parser) => {
-  const source = await scraper.getPageSourceHtml(parser.tickerUrl(item.ticker));
+const getTickerData = async (url: string, parser: Parser) => {
+  const source = await scraper.getPageSourceHtml(url);
   const parsed = parser.parser(source);
 
-  console.log(parsed, pc.blue(parser.name), pc.green(item.ticker));
+  console.log(parsed, pc.blue(parser.name), pc.green(url));
 
   return parsed;
 };
 
 const updateTicker = async (item: QueueItem) => {
   try {
-    const promises = parsers.map((parser) => {
+    const promises = item.tickerHandlers.handlers.map((handler) => {
       return new Promise<{ key: string; data: Record<string, string> }>(
         async (resolve, reject) => {
-          const data = await getTickerData(item, parser);
+          const parser = parsers?.[handler.id];
+          if (!handler.enabled || !parser || !handler.url) return reject();
+
+          const data = await getTickerData(handler.url, parser);
           if (data) {
             return resolve({ key: parser.name, data });
           }
@@ -45,18 +43,12 @@ const updateTicker = async (item: QueueItem) => {
       );
     });
 
-    const response = await Promise.all(promises);
-
-    const data = {};
+    const response = await Promise.all(promises.flat());
     response.forEach((parsed) => {
-      data[parsed.key] = parsed.data;
+      parsed.data && item.setData(parsed.data as any);
     });
 
-    const ticker = new TickerModel(item.ticker);
-    ticker.setData(data);
-    const saved = ticker.saveTicker();
-
-    return data;
+    return item.saveTicker();
   } catch (e) {
     // skip current update in any error
     console.log(pc.bgYellow("!! Skipping ticker"));
@@ -70,18 +62,13 @@ const updateTicker = async (item: QueueItem) => {
  * Adds a new ticker to be retrieved
  */
 const addTickerToUpdate: TickerToUpdateHandler = async (ticker) => {
-  ticker = ticker.toUpperCase();
-  if (queue.find((q) => q.ticker === ticker)) return;
+  if (queue.find((q) => q.symbol === ticker.symbol)) return;
 
-  const tickerTask = {
-    ticker,
-  };
-
-  const tickerFile = PATHS.tickerFile(ticker);
-  if (!fs.existsSync(tickerFile)) {
-    queue.unshift(tickerTask);
+  const dbTicker = database.getTicker(ticker.symbol);
+  if (!dbTicker) {
+    queue.unshift(ticker);
   } else {
-    queue.push(tickerTask);
+    queue.push(ticker);
   }
 };
 
@@ -92,8 +79,8 @@ const addTickerToUpdate: TickerToUpdateHandler = async (ticker) => {
 const tickerUpdaterService = async () => {
   // get ticker from the queue removing it
   const nextTicker = queue.shift();
-  if (nextTicker?.ticker) {
-    console.log(`let's update the ticker:`, nextTicker.ticker);
+  if (nextTicker?.symbol) {
+    console.log(pc.blue(`let's update the ticker: ${nextTicker.symbol}`));
 
     await updateTicker(nextTicker);
 
@@ -105,7 +92,7 @@ const tickerUpdaterService = async () => {
     });
 
     // add it again at the end of the queue
-    addTickerToUpdate(nextTicker.ticker);
+    addTickerToUpdate(nextTicker);
     tickerUpdaterService();
   } else {
     console.log(
@@ -122,15 +109,15 @@ const tickerUpdaterService = async () => {
  * Load current stored tickers to be updated from the filesystem
  */
 const loadStoredTickers = async () => {
-  const tickers = await TickerModel.getTickersList();
+  const tickers = await TickerModel.getTickers();
+
+  console.log("TICKERS", tickers);
 
   tickers.forEach((ticker) => {
-    queue.push({
-      ticker,
-    });
+    queue.push(ticker);
   });
 
-  console.log(queue);
+  // console.log(queue);
   return queue;
 };
 

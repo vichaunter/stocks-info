@@ -8,6 +8,7 @@ const picocolors_1 = __importDefault(require("picocolors"));
 const utils_1 = require("../../utils");
 const name = "finviz";
 const baseurl = `https://finviz.com`;
+const validKeys = ["price", "dividend", "dividendYield"];
 const parser = (source) => {
     if (!source) {
         console.log(`${picocolors_1.default.yellow("Missing source skipping...")}`);
@@ -26,6 +27,8 @@ const parser = (source) => {
         for (let i = 0; i < rowData.length; i += 2) {
             const key = rowData[i] === "Dividend %" ? "DividendYield" : rowData[i];
             const camelKey = (0, utils_1.camelizeText)(key);
+            if (!validKeys.includes(camelKey))
+                continue;
             mapped[camelKey] = rowData[i + 1];
         }
         rows.push(rowData);
