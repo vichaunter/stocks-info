@@ -42,6 +42,8 @@ jobs:
           cd /tmp && git clone https://github.com/vichaunter/stocks-info.git
           rsync -r /tmp/stocks-info/dist/ /opt/services/stocks-info/dist
           rsync /tmp/stocks-info/package.json /opt/services/stocks-info/package.json
+          echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" > /opt/services/stocks-info/.env
+          echo "DB_HANDLER=${{ secrets.DB_HANDLER }}" >> /opt/services/stocks-info/.env
           cd /opt/services/stocks-info/
           yarn install --ignore-engines
           pm2 start stocks-info
