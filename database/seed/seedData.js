@@ -1,3 +1,4 @@
+// @ts-nocheck
 const tickers = [
   { symbol: "ABBV" },
   { symbol: "ABT" },

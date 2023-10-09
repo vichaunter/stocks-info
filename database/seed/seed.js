@@ -1,3 +1,4 @@
+// @ts-nocheck
 const { PrismaClient } = require("@prisma/client");
 const seedData = require("./seedData");
 
