@@ -1,5 +1,5 @@
 import pc from "picocolors";
-import puppeteer from "puppeteer";
+import puppeteer, { Browser } from "puppeteer";
 const USER_AGENTS = [
   // Chrome user agents
   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.61 Safari/537.36",
@@ -65,11 +65,22 @@ const USER_AGENTS = [
 const getRandomAgent = () =>
   USER_AGENTS[Math.floor(Math.random() * USER_AGENTS.length) - 1];
 
-async function getPageSourceHtml(url: string): Promise<string | undefined> {
-  const browserInstance = await puppeteer.launch({
+async function getBrowserInstance() {
+  return await puppeteer.launch({
     headless: true,
     args: ["--no-sandbox"],
   });
+}
+
+async function getPageSourceHtml(
+  url: string,
+  browserInstance?: Browser
+): Promise<string | undefined> {
+  let autoclose = false;
+  if (!browserInstance) {
+    browserInstance = await getBrowserInstance();
+    autoclose = true;
+  }
 
   try {
     const page = await browserInstance.newPage();
@@ -84,7 +95,7 @@ async function getPageSourceHtml(url: string): Promise<string | undefined> {
   } catch (error) {
     console.log(`${pc.red("Error occured:")} ${error.message}`);
   } finally {
-    await browserInstance.close();
+    if (autoclose) await browserInstance.close();
   }
 
   return;
@@ -92,4 +103,5 @@ async function getPageSourceHtml(url: string): Promise<string | undefined> {
 
 export default {
   getPageSourceHtml,
+  getBrowserInstance,
 };

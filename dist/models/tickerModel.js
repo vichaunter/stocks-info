@@ -72,10 +72,11 @@ class TickerModel {
             if (this.symbol && this.id && this.tickerData) {
                 database_1.default.saveTicker(this);
             }
+            console.log("saved ticker");
             return true;
         }
         catch (e) {
-            console.log(picocolors_1.default.bgRed(`Problem writing file for ticker [${this.symbol}]`), e);
+            console.log(picocolors_1.default.bgRed(`Problem writing ticker [${this.symbol}]`), e);
         }
         return false;
     }

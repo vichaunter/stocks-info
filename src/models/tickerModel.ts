@@ -100,13 +100,10 @@ class TickerModel {
       if (this.symbol && this.id && this.tickerData) {
         database.saveTicker(this);
       }
-
+      console.log("saved ticker");
       return true;
     } catch (e) {
-      console.log(
-        pc.bgRed(`Problem writing file for ticker [${this.symbol}]`),
-        e
-      );
+      console.log(pc.bgRed(`Problem writing ticker [${this.symbol}]`), e);
     }
 
     return false;

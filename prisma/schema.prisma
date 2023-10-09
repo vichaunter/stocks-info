@@ -24,6 +24,8 @@ model TickerData {
   price         String
   dividend      String?
   dividendYield String?
+  nextPayDate   String?
+  nextExDate    String?
   ticker        Ticker  @relation(fields: [tickerId], references: [id])
   tickerId      String  @unique @db.ObjectId
 

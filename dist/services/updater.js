@@ -8,22 +8,26 @@ const tickerModel_1 = __importDefault(require("../models/tickerModel"));
 const database_1 = __importDefault(require("./database"));
 const scraper_1 = __importDefault(require("./scraper"));
 const finviz_1 = __importDefault(require("./scraper/finviz"));
-const parsers = { finviz: finviz_1.default };
+const dividendcom_1 = __importDefault(require("./scraper/dividendcom"));
+const parsers = { finviz: finviz_1.default, dividendcom: dividendcom_1.default };
 const queue = [];
-const getTickerData = async (url, parser) => {
-    const source = await scraper_1.default.getPageSourceHtml(url);
+const getTickerData = async (url, parser, browserInstance) => {
+    const source = await scraper_1.default.getPageSourceHtml(url, browserInstance);
     const parsed = parser.parser(source);
     console.log(parsed, picocolors_1.default.blue(parser.name), picocolors_1.default.green(url));
     return parsed;
 };
 const updateTicker = async (item) => {
     try {
+        const browserInstance = await scraper_1.default.getBrowserInstance();
+        process.env.DEBUG &&
+            console.log("updateTicker_handlers:", item.tickerHandlers.handlers);
         const promises = item.tickerHandlers.handlers.map((handler) => {
             return new Promise(async (resolve, reject) => {
                 const parser = parsers?.[handler.id];
                 if (!handler.enabled || !parser || !handler.url)
                     return reject();
-                const data = await getTickerData(handler.url, parser);
+                const data = await getTickerData(handler.url, parser, browserInstance);
                 if (data) {
                     return resolve({ key: parser.name, data });
                 }
@@ -31,13 +35,15 @@ const updateTicker = async (item) => {
             });
         });
         const response = await Promise.all(promises.flat());
+        if (process.env.DEV)
+            return response;
         response.forEach((parsed) => {
             parsed.data && item.setData(parsed.data);
         });
+        browserInstance.close();
         return item.saveTicker();
     }
     catch (e) {
-        // skip current update in any error
         console.log(picocolors_1.default.bgYellow("!! Skipping ticker"));
         console.log(e);
     }
@@ -89,7 +95,7 @@ const tickerUpdaterService = async () => {
  */
 const loadStoredTickers = async () => {
     const tickers = await tickerModel_1.default.getTickers();
-    console.log("TICKERS", tickers);
+    console.log("TICKERS", JSON.stringify(tickers));
     tickers.forEach((ticker) => {
         queue.push(ticker);
     });
@@ -100,4 +106,5 @@ exports.default = {
     addTickerToUpdate,
     tickerUpdaterService,
     loadStoredTickers,
+    updateTicker,
 };

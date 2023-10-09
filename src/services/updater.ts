@@ -3,6 +3,8 @@ import TickerModel from "../models/tickerModel";
 import database from "./database";
 import scraper from "./scraper";
 import finviz from "./scraper/finviz";
+import dividendcom from "./scraper/dividendcom";
+import { Browser } from "puppeteer";
 
 type TickerToUpdateHandler = (ticker: TickerModel) => void;
 type Parser = {
@@ -13,11 +15,15 @@ type Parser = {
 
 export type QueueItem = TickerModel;
 
-const parsers: Record<string, Parser> = { finviz };
+const parsers: Record<string, Parser> = { finviz, dividendcom };
 const queue: QueueItem[] = [];
 
-const getTickerData = async (url: string, parser: Parser) => {
-  const source = await scraper.getPageSourceHtml(url);
+const getTickerData = async (
+  url: string,
+  parser: Parser,
+  browserInstance?: Browser
+) => {
+  const source = await scraper.getPageSourceHtml(url, browserInstance);
   const parsed = parser.parser(source);
 
   console.log(parsed, pc.blue(parser.name), pc.green(url));
@@ -27,13 +33,20 @@ const getTickerData = async (url: string, parser: Parser) => {
 
 const updateTicker = async (item: QueueItem) => {
   try {
+    const browserInstance = await scraper.getBrowserInstance();
+    process.env.DEBUG &&
+      console.log("updateTicker_handlers:", item.tickerHandlers.handlers);
     const promises = item.tickerHandlers.handlers.map((handler) => {
       return new Promise<{ key: string; data: Record<string, string> }>(
         async (resolve, reject) => {
           const parser = parsers?.[handler.id];
           if (!handler.enabled || !parser || !handler.url) return reject();
 
-          const data = await getTickerData(handler.url, parser);
+          const data = await getTickerData(
+            handler.url,
+            parser,
+            browserInstance
+          );
           if (data) {
             return resolve({ key: parser.name, data });
           }
@@ -44,13 +57,16 @@ const updateTicker = async (item: QueueItem) => {
     });
 
     const response = await Promise.all(promises.flat());
+    if (process.env.DEV) return response;
+
     response.forEach((parsed) => {
       parsed.data && item.setData(parsed.data as any);
     });
 
+    browserInstance.close();
+
     return item.saveTicker();
   } catch (e) {
-    // skip current update in any error
     console.log(pc.bgYellow("!! Skipping ticker"));
     console.log(e);
   }
@@ -111,7 +127,7 @@ const tickerUpdaterService = async () => {
 const loadStoredTickers = async () => {
   const tickers = await TickerModel.getTickers();
 
-  console.log("TICKERS", tickers);
+  console.log("TICKERS", JSON.stringify(tickers));
 
   tickers.forEach((ticker) => {
     queue.push(ticker);
@@ -125,4 +141,5 @@ export default {
   addTickerToUpdate,
   tickerUpdaterService,
   loadStoredTickers,
+  updateTicker,
 };

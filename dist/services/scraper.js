@@ -63,11 +63,18 @@ const USER_AGENTS = [
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.111 Safari/537.36 OPR/27.0.1689.76",
 ];
 const getRandomAgent = () => USER_AGENTS[Math.floor(Math.random() * USER_AGENTS.length) - 1];
-async function getPageSourceHtml(url) {
-    const browserInstance = await puppeteer_1.default.launch({
+async function getBrowserInstance() {
+    return await puppeteer_1.default.launch({
         headless: true,
         args: ["--no-sandbox"],
     });
+}
+async function getPageSourceHtml(url, browserInstance) {
+    let autoclose = false;
+    if (!browserInstance) {
+        browserInstance = await getBrowserInstance();
+        autoclose = true;
+    }
     try {
         const page = await browserInstance.newPage();
         await page.setUserAgent(getRandomAgent());
@@ -80,10 +87,12 @@ async function getPageSourceHtml(url) {
         console.log(`${picocolors_1.default.red("Error occured:")} ${error.message}`);
     }
     finally {
-        await browserInstance.close();
+        if (autoclose)
+            await browserInstance.close();
     }
     return;
 }
 exports.default = {
     getPageSourceHtml,
+    getBrowserInstance,
 };
