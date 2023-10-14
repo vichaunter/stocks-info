@@ -4,14 +4,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const cheerio_1 = require("cheerio");
-const dayjs_1 = __importDefault(require("dayjs"));
 const picocolors_1 = __importDefault(require("picocolors"));
+const utils_1 = require("../../utils");
 const name = "dividend.com";
 const baseurl = `https://www.dividend.com`;
 const endpoints = {
     ARR: `${baseurl}/stocks/financials/specialty-finance/mortgage-finance/arr-armour-residential-reit-inc/`,
 };
-const parseDate = (str) => (0, dayjs_1.default)(str, "MMM DD, YYYY").format("DD/MM/YYYY");
 const parser = (source) => {
     if (!source) {
         console.log(`${picocolors_1.default.yellow("Missing source skipping...")}`);
@@ -27,9 +26,9 @@ const parser = (source) => {
     const nextExtCells = $(`div.t-flex.t-font-medium.t-text-xs.xl\\:t-mb-2`);
     mapped["nextExDate"] = nextExtCells.text().replace("Ex-Date:", "").trim();
     if (mapped["nextPayDate"])
-        mapped["nextPayDate"] = parseDate(mapped["nextPayDate"]);
+        mapped["nextPayDate"] = (0, utils_1.formatDate)((0, utils_1.parseDate)(mapped["nextPayDate"]));
     if (mapped["nextExDate"])
-        mapped["nextExDate"] = parseDate(mapped["nextExDate"]);
+        mapped["nextExDate"] = (0, utils_1.formatDate)((0, utils_1.parseDate)(mapped["nextExDate"]));
     console.log({ mapped });
     return mapped;
 };

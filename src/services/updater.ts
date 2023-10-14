@@ -4,18 +4,25 @@ import database from "./database";
 import scraper from "./scraper";
 import finviz from "./scraper/finviz";
 import dividendcom from "./scraper/dividendcom";
+import dividendmax from "./scraper/dividendmax";
+import asxcomau from "./scraper/asxcomau";
 import { Browser } from "puppeteer";
+import dayjs from "dayjs";
 
 type TickerToUpdateHandler = (ticker: TickerModel) => void;
 type Parser = {
   name: string;
-  baseurl: string;
-  parser: (source: string) => Record<string, string>;
+  parser: (source: string) => Record<string, string | string[]>;
 };
 
 export type QueueItem = TickerModel;
 
-const parsers: Record<string, Parser> = { finviz, dividendcom };
+const parsers: Record<string, Parser> = {
+  finviz,
+  dividendcom,
+  asxcomau,
+  dividendmax,
+};
 const queue: QueueItem[] = [];
 
 const getTickerData = async (
@@ -34,26 +41,24 @@ const getTickerData = async (
 const updateTicker = async (item: QueueItem) => {
   try {
     const browserInstance = await scraper.getBrowserInstance();
+
     process.env.DEBUG &&
       console.log("updateTicker_handlers:", item.tickerHandlers.handlers);
     const promises = item.tickerHandlers.handlers.map((handler) => {
-      return new Promise<{ key: string; data: Record<string, string> }>(
-        async (resolve, reject) => {
-          const parser = parsers?.[handler.id];
-          if (!handler.enabled || !parser || !handler.url) return reject();
+      return new Promise<{
+        key: string;
+        data: Record<string, string | string[]>;
+      }>(async (resolve, reject) => {
+        const parser = parsers?.[handler.id];
+        if (!handler.enabled || !parser || !handler.url) return reject();
 
-          const data = await getTickerData(
-            handler.url,
-            parser,
-            browserInstance
-          );
-          if (data) {
-            return resolve({ key: parser.name, data });
-          }
-
-          return reject();
+        const data = await getTickerData(handler.url, parser, browserInstance);
+        if (data) {
+          return resolve({ key: parser.name, data });
         }
-      );
+
+        return reject();
+      });
     });
 
     const response = await Promise.all(promises.flat());
@@ -127,7 +132,10 @@ const tickerUpdaterService = async () => {
 const loadStoredTickers = async () => {
   const tickers = await TickerModel.getTickers();
 
-  console.log("TICKERS", JSON.stringify(tickers));
+  //pick older updated first
+  tickers.sort((a, b) => (a.updatedAt as any) - (b.updatedAt as any));
+
+  console.log("TICKERS", tickers);
 
   tickers.forEach((ticker) => {
     queue.push(ticker);

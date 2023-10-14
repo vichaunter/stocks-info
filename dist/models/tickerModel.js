@@ -8,6 +8,7 @@ const database_1 = __importDefault(require("../services/database"));
 class TickerModel {
     constructor(ticker) {
         Object.assign(this, ticker);
+        this.updatedAt = new Date(ticker.updatedAt);
         return this;
     }
     invalidate() {

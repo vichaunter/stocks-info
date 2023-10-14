@@ -9,7 +9,14 @@ const database_1 = __importDefault(require("./database"));
 const scraper_1 = __importDefault(require("./scraper"));
 const finviz_1 = __importDefault(require("./scraper/finviz"));
 const dividendcom_1 = __importDefault(require("./scraper/dividendcom"));
-const parsers = { finviz: finviz_1.default, dividendcom: dividendcom_1.default };
+const dividendmax_1 = __importDefault(require("./scraper/dividendmax"));
+const asxcomau_1 = __importDefault(require("./scraper/asxcomau"));
+const parsers = {
+    finviz: finviz_1.default,
+    dividendcom: dividendcom_1.default,
+    asxcomau: asxcomau_1.default,
+    dividendmax: dividendmax_1.default,
+};
 const queue = [];
 const getTickerData = async (url, parser, browserInstance) => {
     const source = await scraper_1.default.getPageSourceHtml(url, browserInstance);
@@ -95,7 +102,9 @@ const tickerUpdaterService = async () => {
  */
 const loadStoredTickers = async () => {
     const tickers = await tickerModel_1.default.getTickers();
-    console.log("TICKERS", JSON.stringify(tickers));
+    //pick older updated first
+    tickers.sort((a, b) => a.updatedAt - b.updatedAt);
+    console.log("TICKERS", tickers);
     tickers.forEach((ticker) => {
         queue.push(ticker);
     });

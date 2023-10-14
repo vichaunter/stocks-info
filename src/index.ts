@@ -1,23 +1,25 @@
 import dotenv from "dotenv";
 import express from "express";
+import path from "node:path";
 import { mapRoutes } from "./routes";
 import database from "./services/database";
 import updater from "./services/updater";
-import path from "node:path";
 
 dotenv.config({ path: path.join("..", ".env") });
 database.init();
 
-const app = express();
-mapRoutes(app);
-const server = app.listen(4000, async () => {
-  const { port } = server.address() as { port: number };
-  console.log(`Server started on port: http://localhost:${port}`);
+if (process.env.MODE === "services") {
+  const services = async () => {
+    await updater.loadStoredTickers();
+    updater.tickerUpdaterService();
+  };
 
-  await updater.loadStoredTickers();
-  updater.tickerUpdaterService();
-
-  // console.log(await TickerModel.getTickers());
-});
-
-export default app;
+  services();
+} else {
+  const app = express();
+  mapRoutes(app);
+  const server = app.listen(4000, async () => {
+    const { port } = server.address() as { port: number };
+    console.log(`Server started on port: http://localhost:${port}`);
+  });
+}

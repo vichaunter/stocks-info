@@ -86,6 +86,7 @@ class MongoDBDatabaseHandler extends DatabaseHandler {
       const update = this.prisma.ticker.update({
         where: { id: ticker.id },
         data: {
+          updatedAt: new Date(),
           tickerData: {
             upsert: {
               where: { tickerId: ticker.id },
