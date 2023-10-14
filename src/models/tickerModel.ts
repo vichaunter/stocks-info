@@ -17,11 +17,13 @@ export type TickerFlatData = {
 class TickerModel {
   id: string; // dbId
   symbol: string;
+  updatedAt: Date;
   tickerHandlers: DbTickerHandlers;
   tickerData: TickerData | null;
 
   constructor(ticker: Ticker) {
     Object.assign(this, ticker);
+    this.updatedAt = new Date(ticker.updatedAt);
 
     return this;
   }

@@ -1,15 +1,12 @@
 import { load as cheerioLoad } from "cheerio";
-import dayjs from "dayjs";
 import pc from "picocolors";
+import { formatDate, parseDate } from "../../utils";
 
 const name = "dividend.com";
 const baseurl = `https://www.dividend.com`;
 const endpoints = {
   ARR: `${baseurl}/stocks/financials/specialty-finance/mortgage-finance/arr-armour-residential-reit-inc/`,
 };
-
-const parseDate = (str: string) =>
-  dayjs(str, "MMM DD, YYYY").format("DD/MM/YYYY");
 
 const parser = (source: string): Record<string, string> => {
   if (!source) {
@@ -31,9 +28,9 @@ const parser = (source: string): Record<string, string> => {
   mapped["nextExDate"] = nextExtCells.text().replace("Ex-Date:", "").trim();
 
   if (mapped["nextPayDate"])
-    mapped["nextPayDate"] = parseDate(mapped["nextPayDate"]);
+    mapped["nextPayDate"] = formatDate(parseDate(mapped["nextPayDate"]));
   if (mapped["nextExDate"])
-    mapped["nextExDate"] = parseDate(mapped["nextExDate"]);
+    mapped["nextExDate"] = formatDate(parseDate(mapped["nextExDate"]));
 
   console.log({ mapped });
 
