@@ -4,11 +4,11 @@
     "symbol": "ARR",
     "tickerData": {
       "id": "652165ad9bbb935c2a5cc5e6",
-      "price": "19.55",
+      "price": "18.77",
       "dividend": "5.00",
-      "dividendYield": "25.58%",
-      "nextPayDate": "30/10/2023",
-      "nextExDate": "13/10/2023",
+      "dividendYield": "26.64%",
+      "nextPayDate": "Oct 30, 2023",
+      "nextExDate": "Oct 13, 2023",
       "tickerId": "651fe30cd70f0f4f5d5d50f5"
     },
     "tickerHandlers": {
@@ -25,8 +25,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/financials/specialty-finance/mortgage-finance/arr-armour-residential-reit-inc/"
         }
-      ],
-      "ticker": { "id": "651fe30cd70f0f4f5d5d50f5", "symbol": "ARR" }
+      ]
     }
   },
   {
@@ -34,11 +33,11 @@
     "symbol": "ABBV",
     "tickerData": {
       "id": "6521ad8306218a0c10f252cf",
-      "price": "148.76",
+      "price": "148.24",
       "dividend": "5.70",
-      "dividendYield": "3.83%",
-      "nextPayDate": "15/11/2023",
-      "nextExDate": "12/10/2023",
+      "dividendYield": "3.84%",
+      "nextPayDate": "Nov 15, 2023",
+      "nextExDate": "Oct 12, 2023",
       "tickerId": "6521ab6e53b3a35005c21655"
     },
     "tickerHandlers": {
@@ -55,8 +54,7 @@
           "url": "https://www.dividend.com/stocks/health-care/biotech-pharma/large-pharma/abbv-abbvie-inc/",
           "enabled": true
         }
-      ],
-      "ticker": { "id": "6521ab6e53b3a35005c21655", "symbol": "ABBV" }
+      ]
     }
   },
   {
@@ -64,11 +62,11 @@
     "symbol": "ABT",
     "tickerData": {
       "id": "6521adda556f07a599b23e6f",
-      "price": "98.06",
+      "price": "96.88",
       "dividend": "1.98",
-      "dividendYield": "2.02%",
-      "nextPayDate": "15/11/2023",
-      "nextExDate": "12/10/2023",
+      "dividendYield": "2.05%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ad931d6187a3e43404ad"
     },
     "tickerHandlers": {
@@ -85,8 +83,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/health-care/medical-equipment-devices/medical-devices/abt-abbott-labs/"
         }
-      ],
-      "ticker": { "id": "6521ad931d6187a3e43404ad", "symbol": "ABT" }
+      ]
     }
   },
   {
@@ -94,11 +91,11 @@
     "symbol": "AGNC",
     "tickerData": {
       "id": "6521adeb556f07a599b23e70",
-      "price": "9.16",
+      "price": "8.93",
       "dividend": "1.44",
-      "dividendYield": "15.71%",
-      "nextPayDate": "11/10/2023",
-      "nextExDate": "28/09/2023",
+      "dividendYield": "16.13%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ad941d6187a3e43404af"
     },
     "tickerHandlers": {
@@ -115,8 +112,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/financials/specialty-finance/mortgage-finance/agnc-american-capital-agency/"
         }
-      ],
-      "ticker": { "id": "6521ad941d6187a3e43404af", "symbol": "AGNC" }
+      ]
     }
   },
   {
@@ -124,11 +120,11 @@
     "symbol": "AMGN",
     "tickerData": {
       "id": "6521adf9556f07a599b23e71",
-      "price": "270.93",
+      "price": "267.47",
       "dividend": "8.54",
-      "dividendYield": "3.15%",
-      "nextPayDate": "08/12/2023",
-      "nextExDate": "",
+      "dividendYield": "3.19%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ad941d6187a3e43404b1"
     },
     "tickerHandlers": {
@@ -145,8 +141,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/health-care/biotech-pharma/biotech/amgn-amgen/"
         }
-      ],
-      "ticker": { "id": "6521ad941d6187a3e43404b1", "symbol": "AMGN" }
+      ]
     }
   },
   {
@@ -154,11 +149,11 @@
     "symbol": "AMT",
     "tickerData": {
       "id": "6521ae07556f07a599b23e72",
-      "price": "160.16",
+      "price": "159.57",
       "dividend": "6.42",
-      "dividendYield": "4.01%",
-      "nextPayDate": "27/10/2023",
-      "nextExDate": "10/10/2023",
+      "dividendYield": "4.03%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ad941d6187a3e43404b3"
     },
     "tickerHandlers": {
@@ -175,8 +170,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/real-estate/reit/other/amt-american-tower-corp/"
         }
-      ],
-      "ticker": { "id": "6521ad941d6187a3e43404b3", "symbol": "AMT" }
+      ]
     }
   },
   {
@@ -184,11 +178,11 @@
     "symbol": "ARI",
     "tickerData": {
       "id": "6521ae18556f07a599b23e73",
-      "price": "10.15",
+      "price": "9.85",
       "dividend": "1.38",
-      "dividendYield": "13.60%",
-      "nextPayDate": "13/10/2023",
-      "nextExDate": "28/09/2023",
+      "dividendYield": "14.01%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ad941d6187a3e43404b5"
     },
     "tickerHandlers": {
@@ -205,8 +199,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/financials/specialty-finance/mortgage-finance/ari-apollo-commercial-real-estate-finance-inc/"
         }
-      ],
-      "ticker": { "id": "6521ad941d6187a3e43404b5", "symbol": "ARI" }
+      ]
     }
   },
   {
@@ -214,11 +207,11 @@
     "symbol": "BNS",
     "tickerData": {
       "id": "6521ae27556f07a599b23e74",
-      "price": "44.09",
+      "price": "43.46",
       "dividend": "3.08",
-      "dividendYield": "6.99%",
-      "nextPayDate": "27/10/2023",
-      "nextExDate": "02/10/2023",
+      "dividendYield": "7.09%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ad951d6187a3e43404b7"
     },
     "tickerHandlers": {
@@ -235,8 +228,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/financials/banking/diversified-banks/bns-bank-of-nova-scotia/"
         }
-      ],
-      "ticker": { "id": "6521ad951d6187a3e43404b7", "symbol": "BNS" }
+      ]
     }
   },
   {
@@ -244,11 +236,11 @@
     "symbol": "CSCO",
     "tickerData": {
       "id": "6521ae36556f07a599b23e75",
-      "price": "53.46",
+      "price": "53.45",
       "dividend": "1.58",
       "dividendYield": "2.96%",
-      "nextPayDate": "25/10/2023",
-      "nextExDate": "03/10/2023",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ad951d6187a3e43404b9"
     },
     "tickerHandlers": {
@@ -265,8 +257,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/technology/hardware/communications-equipment/csco-cisco-systems/"
         }
-      ],
-      "ticker": { "id": "6521ad951d6187a3e43404b9", "symbol": "CSCO" }
+      ]
     }
   },
   {
@@ -274,11 +265,11 @@
     "symbol": "CVX",
     "tickerData": {
       "id": "6521ae44556f07a599b23e76",
-      "price": "167.13",
+      "price": "162.23",
       "dividend": "6.03",
-      "dividendYield": "3.61%",
-      "nextPayDate": "12/12/2023",
-      "nextExDate": "",
+      "dividendYield": "3.72%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ad951d6187a3e43404bb"
     },
     "tickerHandlers": {
@@ -295,8 +286,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/energy/oil-gas-coal/integrated-oils/cvx-chevron-corp/"
         }
-      ],
-      "ticker": { "id": "6521ad951d6187a3e43404bb", "symbol": "CVX" }
+      ]
     }
   },
   {
@@ -304,11 +294,11 @@
     "symbol": "DG",
     "tickerData": {
       "id": "6521ae56556f07a599b23e77",
-      "price": "105.00",
-      "dividend": "2.24",
-      "dividendYield": "2.13%",
-      "nextPayDate": "24/10/2023",
-      "nextExDate": "06/10/2023",
+      "price": "103.67",
+      "dividend": "2.22",
+      "dividendYield": "2.14%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ad951d6187a3e43404bd"
     },
     "tickerHandlers": {
@@ -325,8 +315,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/consumer-staples/retail-consumer-staples/mass-merchants/dg-dollar-general/"
         }
-      ],
-      "ticker": { "id": "6521ad951d6187a3e43404bd", "symbol": "DG" }
+      ]
     }
   },
   {
@@ -334,11 +323,11 @@
     "symbol": "DLR",
     "tickerData": {
       "id": "6521ae65556f07a599b23e78",
-      "price": "121.84",
+      "price": "117.37",
       "dividend": "5.00",
-      "dividendYield": "4.10%",
-      "nextPayDate": "12/01/2024",
-      "nextExDate": "",
+      "dividendYield": "4.26%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ad961d6187a3e43404bf"
     },
     "tickerHandlers": {
@@ -355,8 +344,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/real-estate/reit/other/dlr-digital-realty-trust/"
         }
-      ],
-      "ticker": { "id": "6521ad961d6187a3e43404bf", "symbol": "DLR" }
+      ]
     }
   },
   {
@@ -364,11 +352,11 @@
     "symbol": "DUK",
     "tickerData": {
       "id": "6521ae73556f07a599b23e79",
-      "price": "88.68",
+      "price": "86.92",
       "dividend": "4.09",
-      "dividendYield": "4.62%",
-      "nextPayDate": "15/12/2023",
-      "nextExDate": "",
+      "dividendYield": "4.71%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ad961d6187a3e43404c1"
     },
     "tickerHandlers": {
@@ -385,8 +373,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/utilities/integrated-utilities/other/duk-duke-energy/"
         }
-      ],
-      "ticker": { "id": "6521ad961d6187a3e43404c1", "symbol": "DUK" }
+      ]
     }
   },
   {
@@ -394,11 +381,11 @@
     "symbol": "DVN",
     "tickerData": {
       "id": "6521ae80556f07a599b23e7a",
-      "price": "46.22",
+      "price": "43.70",
       "dividend": "2.95",
-      "dividendYield": "6.37%",
-      "nextPayDate": "29/12/2023",
-      "nextExDate": "",
+      "dividendYield": "6.76%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ad961d6187a3e43404c3"
     },
     "tickerHandlers": {
@@ -415,8 +402,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/energy/oil-gas-coal/exploration-production/dvn-devon-energy/"
         }
-      ],
-      "ticker": { "id": "6521ad961d6187a3e43404c3", "symbol": "DVN" }
+      ]
     }
   },
   {
@@ -424,11 +410,11 @@
     "symbol": "EGP",
     "tickerData": {
       "id": "6521ae8f556f07a599b23e7b",
-      "price": "167.05",
+      "price": "166.93",
       "dividend": "5.07",
       "dividendYield": "3.04%",
-      "nextPayDate": "13/10/2023",
-      "nextExDate": "28/09/2023",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ad961d6187a3e43404c5"
     },
     "tickerHandlers": {
@@ -445,8 +431,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/real-estate/reit/other/egp-eastgroup-properties/"
         }
-      ],
-      "ticker": { "id": "6521ad961d6187a3e43404c5", "symbol": "EGP" }
+      ]
     }
   },
   {
@@ -454,11 +439,11 @@
     "symbol": "EPR",
     "tickerData": {
       "id": "6521ae9f556f07a599b23e7c",
-      "price": "42.10",
+      "price": "41.30",
       "dividend": "3.30",
-      "dividendYield": "7.84%",
-      "nextPayDate": "16/10/2023",
-      "nextExDate": "28/09/2023",
+      "dividendYield": "7.99%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ad961d6187a3e43404c7"
     },
     "tickerHandlers": {
@@ -475,8 +460,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/real-estate/reit/other/epr-epr-properties/"
         }
-      ],
-      "ticker": { "id": "6521ad961d6187a3e43404c7", "symbol": "EPR" }
+      ]
     }
   },
   {
@@ -484,11 +468,11 @@
     "symbol": "EQIX",
     "tickerData": {
       "id": "6521aeae556f07a599b23e7d",
-      "price": "742.93",
+      "price": "723.66",
       "dividend": "13.68",
-      "dividendYield": "1.84%",
-      "nextPayDate": "14/12/2023",
-      "nextExDate": "",
+      "dividendYield": "1.89%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ad971d6187a3e43404c9"
     },
     "tickerHandlers": {
@@ -505,8 +489,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/real-estate/reit/other/eqix-equinix-inc/"
         }
-      ],
-      "ticker": { "id": "6521ad971d6187a3e43404c9", "symbol": "EQIX" }
+      ]
     }
   },
   {
@@ -514,11 +497,11 @@
     "symbol": "GBDC",
     "tickerData": {
       "id": "6521aebd556f07a599b23e7e",
-      "price": "14.45",
+      "price": "14.21",
       "dividend": "1.48",
-      "dividendYield": "10.24%",
-      "nextPayDate": "",
-      "nextExDate": "",
+      "dividendYield": "10.42%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ad971d6187a3e43404cb"
     },
     "tickerHandlers": {
@@ -535,8 +518,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/funds/gbdc-golub-capital-bdc-inc/"
         }
-      ],
-      "ticker": { "id": "6521ad971d6187a3e43404cb", "symbol": "GBDC" }
+      ]
     }
   },
   {
@@ -544,11 +526,11 @@
     "symbol": "GE",
     "tickerData": {
       "id": "6521aecd556f07a599b23e7f",
-      "price": "112.58",
+      "price": "111.47",
       "dividend": "0.43",
-      "dividendYield": "0.38%",
-      "nextPayDate": "25/10/2023",
-      "nextExDate": "25/09/2023",
+      "dividendYield": "0.39%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ad971d6187a3e43404cd"
     },
     "tickerHandlers": {
@@ -565,8 +547,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/industrials/electrical-equipment/electrical-power-equipment/ge-general-electric/"
         }
-      ],
-      "ticker": { "id": "6521ad971d6187a3e43404cd", "symbol": "GE" }
+      ]
     }
   },
   {
@@ -574,11 +555,11 @@
     "symbol": "GNL",
     "tickerData": {
       "id": "6521aede556f07a599b23e80",
-      "price": "8.56",
+      "price": "8.46",
       "dividend": "1.55",
-      "dividendYield": "18.15%",
-      "nextPayDate": "16/10/2023",
-      "nextExDate": "11/10/2023",
+      "dividendYield": "18.36%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ad971d6187a3e43404cf"
     },
     "tickerHandlers": {
@@ -595,8 +576,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/real-estate/reit/other/gnl-global-net-lease-inc/"
         }
-      ],
-      "ticker": { "id": "6521ad971d6187a3e43404cf", "symbol": "GNL" }
+      ]
     }
   },
   {
@@ -604,11 +584,11 @@
     "symbol": "HASI",
     "tickerData": {
       "id": "6521aeef556f07a599b23e81",
-      "price": "16.67",
+      "price": "14.42",
       "dividend": "1.60",
-      "dividendYield": "9.62%",
-      "nextPayDate": "11/10/2023",
-      "nextExDate": "03/10/2023",
+      "dividendYield": "11.12%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ad981d6187a3e43404d1"
     },
     "tickerHandlers": {
@@ -625,8 +605,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/real-estate/reit/other/hasi-hannon-armstrong-sustnbl-infrstr-cap-inc/"
         }
-      ],
-      "ticker": { "id": "6521ad981d6187a3e43404d1", "symbol": "HASI" }
+      ]
     }
   },
   {
@@ -634,11 +613,11 @@
     "symbol": "HD",
     "tickerData": {
       "id": "6521aefd556f07a599b23e82",
-      "price": "299.38",
+      "price": "292.82",
       "dividend": "8.30",
-      "dividendYield": "2.77%",
-      "nextPayDate": "15/12/2023",
-      "nextExDate": "",
+      "dividendYield": "2.84%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ad981d6187a3e43404d3"
     },
     "tickerHandlers": {
@@ -655,8 +634,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/consumer-discretionary/retail-discretionary/home-products-stores/hd-home-depot/"
         }
-      ],
-      "ticker": { "id": "6521ad981d6187a3e43404d3", "symbol": "HD" }
+      ]
     }
   },
   {
@@ -664,11 +642,11 @@
     "symbol": "HR",
     "tickerData": {
       "id": "6521af0b556f07a599b23e83",
-      "price": "14.73",
+      "price": "14.44",
       "dividend": "1.24",
-      "dividendYield": "8.42%",
-      "nextPayDate": "30/08/2023",
-      "nextExDate": "",
+      "dividendYield": "8.59%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ad981d6187a3e43404d5"
     },
     "tickerHandlers": {
@@ -685,8 +663,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/real-estate/reit/other/hr-healthcare-realty-trust/"
         }
-      ],
-      "ticker": { "id": "6521ad981d6187a3e43404d5", "symbol": "HR" }
+      ]
     }
   },
   {
@@ -694,11 +671,11 @@
     "symbol": "IIPR",
     "tickerData": {
       "id": "6521af1a556f07a599b23e84",
-      "price": "76.70",
+      "price": "73.45",
       "dividend": "7.24",
-      "dividendYield": "9.44%",
-      "nextPayDate": "13/10/2023",
-      "nextExDate": "28/09/2023",
+      "dividendYield": "9.86%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ad981d6187a3e43404d7"
     },
     "tickerHandlers": {
@@ -715,8 +692,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/real-estate/reit/other/iipr-innovative-industrial-properties-inc/"
         }
-      ],
-      "ticker": { "id": "6521ad981d6187a3e43404d7", "symbol": "IIPR" }
+      ]
     }
   },
   {
@@ -740,9 +716,12 @@
           "enabled": true,
           "url": "https://finviz.com/quote.ashx?t=IRM"
         },
-        { "id": "dividendcom", "enabled": false, "url": "" }
-      ],
-      "ticker": { "id": "6521ad981d6187a3e43404d9", "symbol": "IRM" }
+        {
+          "id": "dividendcom",
+          "enabled": false,
+          "url": ""
+        }
+      ]
     }
   },
   {
@@ -750,11 +729,11 @@
     "symbol": "JNJ",
     "tickerData": {
       "id": "6521af3a556f07a599b23e86",
-      "price": "158.70",
+      "price": "157.64",
       "dividend": "4.60",
-      "dividendYield": "2.90%",
-      "nextPayDate": "06/12/2023",
-      "nextExDate": "",
+      "dividendYield": "2.92%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ad991d6187a3e43404db"
     },
     "tickerHandlers": {
@@ -771,8 +750,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/health-care/biotech-pharma/large-pharma/jnj-johnson-and-johnson/"
         }
-      ],
-      "ticker": { "id": "6521ad991d6187a3e43404db", "symbol": "JNJ" }
+      ]
     }
   },
   {
@@ -780,11 +758,11 @@
     "symbol": "KO",
     "tickerData": {
       "id": "6521af49556f07a599b23e87",
-      "price": "53.98",
+      "price": "53.14",
       "dividend": "1.78",
-      "dividendYield": "3.29%",
-      "nextPayDate": "15/12/2023",
-      "nextExDate": "",
+      "dividendYield": "3.34%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ad991d6187a3e43404dd"
     },
     "tickerHandlers": {
@@ -801,8 +779,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/consumer-staples/consumer-products/beverages/ko-coca-cola-co/"
         }
-      ],
-      "ticker": { "id": "6521ad991d6187a3e43404dd", "symbol": "KO" }
+      ]
     }
   },
   {
@@ -810,11 +787,11 @@
     "symbol": "LLY",
     "tickerData": {
       "id": "6521af5b556f07a599b23e88",
-      "price": "581.94",
+      "price": "565.22",
       "dividend": "4.54",
-      "dividendYield": "0.78%",
-      "nextPayDate": "08/12/2023",
-      "nextExDate": "",
+      "dividendYield": "0.80%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ad991d6187a3e43404df"
     },
     "tickerHandlers": {
@@ -831,8 +808,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/health-care/biotech-pharma/large-pharma/lly-eli-lilly/"
         }
-      ],
-      "ticker": { "id": "6521ad991d6187a3e43404df", "symbol": "LLY" }
+      ]
     }
   },
   {
@@ -840,11 +816,11 @@
     "symbol": "LTC",
     "tickerData": {
       "id": "6521af6b556f07a599b23e89",
-      "price": "32.37",
+      "price": "31.72",
       "dividend": "2.28",
-      "dividendYield": "7.04%",
-      "nextPayDate": "31/10/2023",
-      "nextExDate": "20/10/2023",
+      "dividendYield": "7.19%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ad991d6187a3e43404e1"
     },
     "tickerHandlers": {
@@ -861,8 +837,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/real-estate/reit/other/ltc-ltc-properties/"
         }
-      ],
-      "ticker": { "id": "6521ad991d6187a3e43404e1", "symbol": "LTC" }
+      ]
     }
   },
   {
@@ -870,11 +845,11 @@
     "symbol": "MA",
     "tickerData": {
       "id": "6521af7d556f07a599b23e8a",
-      "price": "402.01",
+      "price": "397.97",
       "dividend": "2.14",
-      "dividendYield": "0.53%",
-      "nextPayDate": "09/11/2023",
-      "nextExDate": "05/10/2023",
+      "dividendYield": "0.54%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ad9a1d6187a3e43404e3"
     },
     "tickerHandlers": {
@@ -891,8 +866,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/financials/specialty-finance/consumer-finance/ma-mastercard/"
         }
-      ],
-      "ticker": { "id": "6521ad9a1d6187a3e43404e3", "symbol": "MA" }
+      ]
     }
   },
   {
@@ -900,11 +874,11 @@
     "symbol": "MAIN",
     "tickerData": {
       "id": "6521af8b556f07a599b23e8b",
-      "price": "40.24",
+      "price": "39.60",
       "dividend": "3.37",
-      "dividendYield": "8.37%",
-      "nextPayDate": "13/10/2023",
-      "nextExDate": "05/10/2023",
+      "dividendYield": "8.51%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ad9a1d6187a3e43404e5"
     },
     "tickerHandlers": {
@@ -921,8 +895,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/financials/asset-management/investment-management/main-main-street-capital-corp/"
         }
-      ],
-      "ticker": { "id": "6521ad9a1d6187a3e43404e5", "symbol": "MAIN" }
+      ]
     }
   },
   {
@@ -930,11 +903,11 @@
     "symbol": "MFA",
     "tickerData": {
       "id": "6521af9c556f07a599b23e8c",
-      "price": "9.01",
+      "price": "8.74",
       "dividend": "1.40",
-      "dividendYield": "15.54%",
-      "nextPayDate": "31/10/2023",
-      "nextExDate": "29/09/2023",
+      "dividendYield": "16.02%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ad9a1d6187a3e43404e7"
     },
     "tickerHandlers": {
@@ -951,8 +924,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/financials/specialty-finance/mortgage-finance/mfa-mfa-mortgage-investments/"
         }
-      ],
-      "ticker": { "id": "6521ad9a1d6187a3e43404e7", "symbol": "MFA" }
+      ]
     }
   },
   {
@@ -960,11 +932,11 @@
     "symbol": "MMM",
     "tickerData": {
       "id": "6521b19674cb250d8ce111b2",
-      "price": "90.74",
+      "price": "88.40",
       "dividend": "6.13",
-      "dividendYield": "6.76%",
-      "nextPayDate": "12/12/2023",
-      "nextExDate": "",
+      "dividendYield": "6.94%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ad9a1d6187a3e43404e9"
     },
     "tickerHandlers": {
@@ -981,8 +953,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/materials/chemicals/specialty-chemicals/mmm-3m/"
         }
-      ],
-      "ticker": { "id": "6521ad9a1d6187a3e43404e9", "symbol": "MMM" }
+      ]
     }
   },
   {
@@ -990,11 +961,11 @@
     "symbol": "MO",
     "tickerData": {
       "id": "6521b1a574cb250d8ce111b3",
-      "price": "43.21",
+      "price": "42.07",
       "dividend": "3.85",
-      "dividendYield": "8.91%",
-      "nextPayDate": "10/10/2023",
-      "nextExDate": "14/09/2023",
+      "dividendYield": "9.16%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ad9b1d6187a3e43404eb"
     },
     "tickerHandlers": {
@@ -1011,8 +982,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/consumer-staples/consumer-products/tobacco/mo-altria-group/"
         }
-      ],
-      "ticker": { "id": "6521ad9b1d6187a3e43404eb", "symbol": "MO" }
+      ]
     }
   },
   {
@@ -1020,11 +990,11 @@
     "symbol": "MSFT",
     "tickerData": {
       "id": "6521b1b474cb250d8ce111b4",
-      "price": "330.28",
+      "price": "327.26",
       "dividend": "2.86",
-      "dividendYield": "0.86%",
-      "nextPayDate": "14/12/2023",
-      "nextExDate": "15/11/2023",
+      "dividendYield": "0.87%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ad9b1d6187a3e43404ed"
     },
     "tickerHandlers": {
@@ -1041,8 +1011,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/technology/software/infrastructure-software/msft-microsoft/"
         }
-      ],
-      "ticker": { "id": "6521ad9b1d6187a3e43404ed", "symbol": "MSFT" }
+      ]
     }
   },
   {
@@ -1050,11 +1019,11 @@
     "symbol": "NEE",
     "tickerData": {
       "id": "6521b1c374cb250d8ce111b5",
-      "price": "50.83",
+      "price": "50.24",
       "dividend": "1.86",
-      "dividendYield": "3.65%",
-      "nextPayDate": "15/12/2023",
-      "nextExDate": "",
+      "dividendYield": "3.69%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ad9b1d6187a3e43404ef"
     },
     "tickerHandlers": {
@@ -1071,8 +1040,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/utilities/integrated-utilities/other/nee-nextera-energy-inc/"
         }
-      ],
-      "ticker": { "id": "6521ad9b1d6187a3e43404ef", "symbol": "NEE" }
+      ]
     }
   },
   {
@@ -1080,11 +1048,11 @@
     "symbol": "NLY",
     "tickerData": {
       "id": "6521b1d474cb250d8ce111b6",
-      "price": "18.10",
+      "price": "17.72",
       "dividend": "2.59",
-      "dividendYield": "14.30%",
-      "nextPayDate": "31/10/2023",
-      "nextExDate": "28/09/2023",
+      "dividendYield": "14.61%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ad9b1d6187a3e43404f1"
     },
     "tickerHandlers": {
@@ -1101,8 +1069,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/financials/specialty-finance/mortgage-finance/nly-annaly-capital/"
         }
-      ],
-      "ticker": { "id": "6521ad9b1d6187a3e43404f1", "symbol": "NLY" }
+      ]
     }
   },
   {
@@ -1110,11 +1077,11 @@
     "symbol": "NNN",
     "tickerData": {
       "id": "6521b1e474cb250d8ce111b7",
-      "price": "35.13",
+      "price": "34.68",
       "dividend": "2.22",
-      "dividendYield": "6.32%",
-      "nextPayDate": "15/02/2024",
-      "nextExDate": "",
+      "dividendYield": "6.40%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ad9c1d6187a3e43404f3"
     },
     "tickerHandlers": {
@@ -1131,8 +1098,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/real-estate/reit/other/nnn-national-retail-properties/"
         }
-      ],
-      "ticker": { "id": "6521ad9c1d6187a3e43404f3", "symbol": "NNN" }
+      ]
     }
   },
   {
@@ -1140,11 +1106,11 @@
     "symbol": "O",
     "tickerData": {
       "id": "6521b1f374cb250d8ce111b8",
-      "price": "50.19",
+      "price": "50.11",
       "dividend": "3.05",
-      "dividendYield": "6.08%",
-      "nextPayDate": "13/10/2023",
-      "nextExDate": "29/09/2023",
+      "dividendYield": "6.09%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ad9c1d6187a3e43404f5"
     },
     "tickerHandlers": {
@@ -1161,8 +1127,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/real-estate/reit/other/o-realty-income-corp/"
         }
-      ],
-      "ticker": { "id": "6521ad9c1d6187a3e43404f5", "symbol": "O" }
+      ]
     }
   },
   {
@@ -1170,11 +1135,11 @@
     "symbol": "OHI",
     "tickerData": {
       "id": "6521b20374cb250d8ce111b9",
-      "price": "34.19",
+      "price": "33.17",
       "dividend": "2.68",
-      "dividendYield": "7.84%",
-      "nextPayDate": "15/11/2023",
-      "nextExDate": "",
+      "dividendYield": "8.08%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ad9c1d6187a3e43404f7"
     },
     "tickerHandlers": {
@@ -1191,8 +1156,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/real-estate/reit/other/ohi-omega-healthcare-investors-inc/"
         }
-      ],
-      "ticker": { "id": "6521ad9c1d6187a3e43404f7", "symbol": "OHI" }
+      ]
     }
   },
   {
@@ -1200,11 +1164,11 @@
     "symbol": "OPI",
     "tickerData": {
       "id": "6521b21074cb250d8ce111ba",
-      "price": "4.26",
+      "price": "3.90",
       "dividend": "1.30",
-      "dividendYield": "30.48%",
-      "nextPayDate": "17/11/2023",
-      "nextExDate": "",
+      "dividendYield": "33.33%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ad9c1d6187a3e43404f9"
     },
     "tickerHandlers": {
@@ -1221,8 +1185,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/real-estate/reit/other/opi-office-properties-income-trust/"
         }
-      ],
-      "ticker": { "id": "6521ad9c1d6187a3e43404f9", "symbol": "OPI" }
+      ]
     }
   },
   {
@@ -1230,11 +1193,11 @@
     "symbol": "PEG",
     "tickerData": {
       "id": "6521b22174cb250d8ce111bb",
-      "price": "59.17",
+      "price": "57.32",
       "dividend": "2.28",
-      "dividendYield": "3.86%",
-      "nextPayDate": "29/12/2023",
-      "nextExDate": "",
+      "dividendYield": "3.99%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ad9c1d6187a3e43404fb"
     },
     "tickerHandlers": {
@@ -1251,8 +1214,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/utilities/integrated-utilities/other/peg-public-service-enterprise-group/"
         }
-      ],
-      "ticker": { "id": "6521ad9c1d6187a3e43404fb", "symbol": "PEG" }
+      ]
     }
   },
   {
@@ -1260,11 +1222,11 @@
     "symbol": "PEP",
     "tickerData": {
       "id": "6521b23274cb250d8ce111bc",
-      "price": "163.68",
+      "price": "160.29",
       "dividend": "4.92",
-      "dividendYield": "3.00%",
-      "nextPayDate": "05/01/2024",
-      "nextExDate": "",
+      "dividendYield": "3.07%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ad9d1d6187a3e43404fd"
     },
     "tickerHandlers": {
@@ -1281,8 +1243,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/consumer-staples/consumer-products/beverages/pep-pepsico/"
         }
-      ],
-      "ticker": { "id": "6521ad9d1d6187a3e43404fd", "symbol": "PEP" }
+      ]
     }
   },
   {
@@ -1290,11 +1251,11 @@
     "symbol": "PFE",
     "tickerData": {
       "id": "6521b24374cb250d8ce111bd",
-      "price": "33.39",
+      "price": "33.13",
       "dividend": "1.67",
-      "dividendYield": "5.00%",
-      "nextPayDate": "04/12/2023",
-      "nextExDate": "08/11/2023",
+      "dividendYield": "5.04%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ad9d1d6187a3e43404ff"
     },
     "tickerHandlers": {
@@ -1311,8 +1272,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/health-care/biotech-pharma/large-pharma/pfe-pfizer/"
         }
-      ],
-      "ticker": { "id": "6521ad9d1d6187a3e43404ff", "symbol": "PFE" }
+      ]
     }
   },
   {
@@ -1320,11 +1280,11 @@
     "symbol": "PG",
     "tickerData": {
       "id": "6521b25574cb250d8ce111be",
-      "price": "145.10",
+      "price": "144.09",
       "dividend": "3.85",
-      "dividendYield": "2.65%",
-      "nextPayDate": "15/11/2023",
-      "nextExDate": "",
+      "dividendYield": "2.67%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ad9d1d6187a3e4340501"
     },
     "tickerHandlers": {
@@ -1341,8 +1301,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/consumer-staples/consumer-products/household-products/pg-procter-and-gamble/"
         }
-      ],
-      "ticker": { "id": "6521ad9d1d6187a3e4340501", "symbol": "PG" }
+      ]
     }
   },
   {
@@ -1350,11 +1309,11 @@
     "symbol": "PLD",
     "tickerData": {
       "id": "6521b26474cb250d8ce111bf",
-      "price": "111.30",
+      "price": "108.91",
       "dividend": "3.48",
-      "dividendYield": "3.13%",
-      "nextPayDate": "29/12/2023",
-      "nextExDate": "",
+      "dividendYield": "3.20%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ad9d1d6187a3e4340503"
     },
     "tickerHandlers": {
@@ -1371,8 +1330,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/real-estate/reit/other/pld-prologis/"
         }
-      ],
-      "ticker": { "id": "6521ad9d1d6187a3e4340503", "symbol": "PLD" }
+      ]
     }
   },
   {
@@ -1383,10 +1341,17 @@
       "id": "6521ad9e1d6187a3e4340506",
       "tickerId": "6521ad9e1d6187a3e4340505",
       "handlers": [
-        { "id": "finviz", "enabled": false, "url": "" },
-        { "id": "dividendcom", "enabled": false, "url": "" }
-      ],
-      "ticker": { "id": "6521ad9e1d6187a3e4340505", "symbol": "PLS" }
+        {
+          "id": "finviz",
+          "enabled": false,
+          "url": ""
+        },
+        {
+          "id": "dividendcom",
+          "enabled": false,
+          "url": ""
+        }
+      ]
     }
   },
   {
@@ -1394,11 +1359,11 @@
     "symbol": "PSA",
     "tickerData": {
       "id": "6521b28374cb250d8ce111c0",
-      "price": "272.95",
+      "price": "263.97",
       "dividend": "12.04",
-      "dividendYield": "4.41%",
-      "nextPayDate": "29/12/2023",
-      "nextExDate": "",
+      "dividendYield": "4.56%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ad9e1d6187a3e4340507"
     },
     "tickerHandlers": {
@@ -1415,8 +1380,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/real-estate/reit/other/psa-public-storage/"
         }
-      ],
-      "ticker": { "id": "6521ad9e1d6187a3e4340507", "symbol": "PSA" }
+      ]
     }
   },
   {
@@ -1440,9 +1404,12 @@
           "enabled": true,
           "url": "https://finviz.com/quote.ashx?t=REFI"
         },
-        { "id": "dividendcom", "enabled": false, "url": "" }
-      ],
-      "ticker": { "id": "6521ad9e1d6187a3e4340509", "symbol": "REFI" }
+        {
+          "id": "dividendcom",
+          "enabled": false,
+          "url": ""
+        }
+      ]
     }
   },
   {
@@ -1450,11 +1417,11 @@
     "symbol": "REXR",
     "tickerData": {
       "id": "6521b2a174cb250d8ce111c2",
-      "price": "48.33",
+      "price": "48.22",
       "dividend": "1.52",
       "dividendYield": "3.15%",
-      "nextPayDate": "16/10/2023",
-      "nextExDate": "28/09/2023",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ad9e1d6187a3e434050b"
     },
     "tickerHandlers": {
@@ -1471,8 +1438,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/real-estate/reit/other/rexr-rexford-industrial-realty-inc/"
         }
-      ],
-      "ticker": { "id": "6521ad9e1d6187a3e434050b", "symbol": "REXR" }
+      ]
     }
   },
   {
@@ -1480,11 +1446,11 @@
     "symbol": "SO",
     "tickerData": {
       "id": "6521b2b274cb250d8ce111c3",
-      "price": "66.43",
+      "price": "64.97",
       "dividend": "2.79",
-      "dividendYield": "4.19%",
-      "nextPayDate": "06/12/2023",
-      "nextExDate": "",
+      "dividendYield": "4.29%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ad9f1d6187a3e434050d"
     },
     "tickerHandlers": {
@@ -1501,8 +1467,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/utilities/integrated-utilities/other/so-southern-company/"
         }
-      ],
-      "ticker": { "id": "6521ad9f1d6187a3e434050d", "symbol": "SO" }
+      ]
     }
   },
   {
@@ -1510,11 +1475,11 @@
     "symbol": "SON",
     "tickerData": {
       "id": "6521b2c274cb250d8ce111c4",
-      "price": "54.53",
+      "price": "53.32",
       "dividend": "2.03",
-      "dividendYield": "3.72%",
-      "nextPayDate": "08/12/2023",
-      "nextExDate": "",
+      "dividendYield": "3.80%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ad9f1d6187a3e434050f"
     },
     "tickerHandlers": {
@@ -1531,8 +1496,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/materials/containers-packaging/containers-packaging/son-sonoco-products/"
         }
-      ],
-      "ticker": { "id": "6521ad9f1d6187a3e434050f", "symbol": "SON" }
+      ]
     }
   },
   {
@@ -1540,11 +1504,11 @@
     "symbol": "SPG",
     "tickerData": {
       "id": "6521b2d374cb250d8ce111c5",
-      "price": "106.87",
+      "price": "104.41",
       "dividend": "7.44",
-      "dividendYield": "6.96%",
-      "nextPayDate": "29/12/2023",
-      "nextExDate": "",
+      "dividendYield": "7.13%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ad9f1d6187a3e4340511"
     },
     "tickerHandlers": {
@@ -1561,8 +1525,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/real-estate/reit/other/spg-simon-property-group/"
         }
-      ],
-      "ticker": { "id": "6521ad9f1d6187a3e4340511", "symbol": "SPG" }
+      ]
     }
   },
   {
@@ -1570,11 +1533,11 @@
     "symbol": "STAG",
     "tickerData": {
       "id": "6521b2e574cb250d8ce111c6",
-      "price": "35.12",
+      "price": "34.25",
       "dividend": "1.47",
-      "dividendYield": "4.19%",
-      "nextPayDate": "16/10/2023",
-      "nextExDate": "28/09/2023",
+      "dividendYield": "4.30%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ad9f1d6187a3e4340513"
     },
     "tickerHandlers": {
@@ -1591,8 +1554,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/real-estate/reit/other/stag-stag-industrial-inc/"
         }
-      ],
-      "ticker": { "id": "6521ad9f1d6187a3e4340513", "symbol": "STAG" }
+      ]
     }
   },
   {
@@ -1600,11 +1562,11 @@
     "symbol": "T",
     "tickerData": {
       "id": "6521b2f374cb250d8ce111c7",
-      "price": "14.90",
+      "price": "14.45",
       "dividend": "1.12",
-      "dividendYield": "7.49%",
-      "nextPayDate": "01/11/2023",
-      "nextExDate": "06/10/2023",
+      "dividendYield": "7.72%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ada01d6187a3e4340515"
     },
     "tickerHandlers": {
@@ -1621,8 +1583,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/communications/telecommunication/telecom-carriers/t-atandt/"
         }
-      ],
-      "ticker": { "id": "6521ada01d6187a3e4340515", "symbol": "T" }
+      ]
     }
   },
   {
@@ -1630,11 +1591,11 @@
     "symbol": "TRNO",
     "tickerData": {
       "id": "6521b30474cb250d8ce111c8",
-      "price": "57.97",
+      "price": "57.24",
       "dividend": "1.70",
-      "dividendYield": "2.93%",
-      "nextPayDate": "13/10/2023",
-      "nextExDate": "28/09/2023",
+      "dividendYield": "2.97%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ada01d6187a3e4340517"
     },
     "tickerHandlers": {
@@ -1651,8 +1612,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/real-estate/reit/other/trno-terreno-realty-corp/"
         }
-      ],
-      "ticker": { "id": "6521ada01d6187a3e4340517", "symbol": "TRNO" }
+      ]
     }
   },
   {
@@ -1676,9 +1636,12 @@
           "enabled": true,
           "url": "https://finviz.com/quote.ashx?t=TTE"
         },
-        { "id": "dividendcom", "enabled": false, "url": "" }
-      ],
-      "ticker": { "id": "6521ada01d6187a3e4340519", "symbol": "TTE" }
+        {
+          "id": "dividendcom",
+          "enabled": false,
+          "url": ""
+        }
+      ]
     }
   },
   {
@@ -1686,11 +1649,11 @@
     "symbol": "TWO",
     "tickerData": {
       "id": "6521b32274cb250d8ce111ca",
-      "price": "12.34",
+      "price": "12.02",
       "dividend": "1.98",
-      "dividendYield": "16.05%",
-      "nextPayDate": "27/10/2023",
-      "nextExDate": "02/10/2023",
+      "dividendYield": "16.47%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ada01d6187a3e434051b"
     },
     "tickerHandlers": {
@@ -1707,8 +1670,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/financials/specialty-finance/mortgage-finance/two-two-harbors-investment-corp/"
         }
-      ],
-      "ticker": { "id": "6521ada01d6187a3e434051b", "symbol": "TWO" }
+      ]
     }
   },
   {
@@ -1716,11 +1678,11 @@
     "symbol": "UNH",
     "tickerData": {
       "id": "6521b33574cb250d8ce111cb",
-      "price": "524.82",
+      "price": "524.81",
       "dividend": "6.98",
       "dividendYield": "1.33%",
-      "nextPayDate": "13/12/2023",
-      "nextExDate": "",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ada01d6187a3e434051d"
     },
     "tickerHandlers": {
@@ -1737,8 +1699,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/health-care/health-care-facilities-services/managed-care/unh-unitedhealth-group/"
         }
-      ],
-      "ticker": { "id": "6521ada01d6187a3e434051d", "symbol": "UNH" }
+      ]
     }
   },
   {
@@ -1746,11 +1707,11 @@
     "symbol": "UPS",
     "tickerData": {
       "id": "6521b79f74cb250d8ce111d7",
-      "price": "156.01",
+      "price": "154.27",
       "dividend": "6.46",
-      "dividendYield": "4.14%",
-      "nextPayDate": "01/12/2023",
-      "nextExDate": "",
+      "dividendYield": "4.19%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ada11d6187a3e434051f"
     },
     "tickerHandlers": {
@@ -1767,8 +1728,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/industrials/transportation-logistics/courier-services/ups-united-parcel-service/"
         }
-      ],
-      "ticker": { "id": "6521ada11d6187a3e434051f", "symbol": "UPS" }
+      ]
     }
   },
   {
@@ -1776,11 +1736,11 @@
     "symbol": "V",
     "tickerData": {
       "id": "6521b35374cb250d8ce111cc",
-      "price": "237.93",
+      "price": "235.04",
       "dividend": "1.82",
-      "dividendYield": "0.76%",
-      "nextPayDate": "01/12/2023",
-      "nextExDate": "",
+      "dividendYield": "0.77%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ada11d6187a3e4340521"
     },
     "tickerHandlers": {
@@ -1797,8 +1757,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/financials/specialty-finance/consumer-finance/v-visa/"
         }
-      ],
-      "ticker": { "id": "6521ada11d6187a3e4340521", "symbol": "V" }
+      ]
     }
   },
   {
@@ -1806,11 +1765,11 @@
     "symbol": "VGR",
     "tickerData": {
       "id": "6521b36274cb250d8ce111cd",
-      "price": "11.22",
+      "price": "10.80",
       "dividend": "0.80",
-      "dividendYield": "7.13%",
-      "nextPayDate": "20/12/2023",
-      "nextExDate": "",
+      "dividendYield": "7.41%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ada21d6187a3e4340523"
     },
     "tickerHandlers": {
@@ -1827,8 +1786,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/consumer-staples/consumer-products/tobacco/vgr-vector-group/"
         }
-      ],
-      "ticker": { "id": "6521ada21d6187a3e4340523", "symbol": "VGR" }
+      ]
     }
   },
   {
@@ -1836,11 +1794,11 @@
     "symbol": "VICI",
     "tickerData": {
       "id": "6521b37274cb250d8ce111ce",
-      "price": "29.37",
+      "price": "28.61",
       "dividend": "1.61",
-      "dividendYield": "5.48%",
-      "nextPayDate": "05/01/2024",
-      "nextExDate": "",
+      "dividendYield": "5.62%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ada21d6187a3e4340525"
     },
     "tickerHandlers": {
@@ -1857,8 +1815,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/real-estate/reit/other/vici-vici-properties-inc/"
         }
-      ],
-      "ticker": { "id": "6521ada21d6187a3e4340525", "symbol": "VICI" }
+      ]
     }
   },
   {
@@ -1882,9 +1839,12 @@
           "enabled": true,
           "url": "https://finviz.com/quote.ashx?t=VTRS"
         },
-        { "id": "dividendcom", "enabled": false, "url": "" }
-      ],
-      "ticker": { "id": "6521ada21d6187a3e4340527", "symbol": "VTRS" }
+        {
+          "id": "dividendcom",
+          "enabled": false,
+          "url": ""
+        }
+      ]
     }
   },
   {
@@ -1892,11 +1852,11 @@
     "symbol": "VZ",
     "tickerData": {
       "id": "6521b38f74cb250d8ce111d0",
-      "price": "31.65",
+      "price": "30.85",
       "dividend": "2.63",
-      "dividendYield": "8.32%",
-      "nextPayDate": "01/11/2023",
-      "nextExDate": "06/10/2023",
+      "dividendYield": "8.53%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ada31d6187a3e4340529"
     },
     "tickerHandlers": {
@@ -1913,8 +1873,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/communications/telecommunication/telecom-carriers/vz-verizon/"
         }
-      ],
-      "ticker": { "id": "6521ada31d6187a3e4340529", "symbol": "VZ" }
+      ]
     }
   },
   {
@@ -1922,11 +1881,11 @@
     "symbol": "WBA",
     "tickerData": {
       "id": "6521b39f74cb250d8ce111d1",
-      "price": "22.51",
+      "price": "21.81",
       "dividend": "1.95",
-      "dividendYield": "8.67%",
-      "nextPayDate": "12/12/2023",
-      "nextExDate": "",
+      "dividendYield": "8.95%",
+      "nextPayDate": null,
+      "nextExDate": null,
       "tickerId": "6521ada31d6187a3e434052b"
     },
     "tickerHandlers": {
@@ -1943,8 +1902,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/consumer-staples/retail-consumer-staples/food-drug-stores/wba-walgreens-boots-alliance-inc/"
         }
-      ],
-      "ticker": { "id": "6521ada31d6187a3e434052b", "symbol": "WBA" }
+      ]
     }
   },
   {
@@ -1965,8 +1923,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/industrials/transportation-equipment/commercial-vehicles/wbc-wabco-holdings/"
         }
-      ],
-      "ticker": { "id": "6521ada31d6187a3e434052d", "symbol": "WBC" }
+      ]
     }
   },
   {
@@ -1995,8 +1952,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/real-estate/reit/other/well-welltower-inc/"
         }
-      ],
-      "ticker": { "id": "6521ada31d6187a3e434052f", "symbol": "WELL" }
+      ]
     }
   },
   {
@@ -2025,8 +1981,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/financials/banking/banks/wfc-wells-fargo/"
         }
-      ],
-      "ticker": { "id": "6521ada41d6187a3e4340531", "symbol": "WFC" }
+      ]
     }
   },
   {
@@ -2055,8 +2010,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/consumer-staples/retail-consumer-staples/mass-merchants/wmt-wal-mart-stores/"
         }
-      ],
-      "ticker": { "id": "6521ada41d6187a3e4340533", "symbol": "WMT" }
+      ]
     }
   },
   {
@@ -2085,8 +2039,7 @@
           "enabled": true,
           "url": "https://www.dividend.com/stocks/real-estate/reit/other/wpc-wp-carey-inc/"
         }
-      ],
-      "ticker": { "id": "6521ada41d6187a3e4340535", "symbol": "WPC" }
+      ]
     }
   },
   {
@@ -2114,27 +2067,6 @@
           "id": "dividendcom",
           "enabled": true,
           "url": "https://www.dividend.com/stocks/utilities/integrated-utilities/other/xel-xcel-energy/"
-        }
-      ],
-      "ticker": { "id": "6521ada51d6187a3e4340537", "symbol": "XEL" }
-    }
-  },
-  {
-    "id": "6526fe7c9585dc382f8c4418",
-    "symbol": "CQR",
-    "tickerData": null,
-    "tickerHandlers": {
-      "tickerId": "6526fe7c9585dc382f8c4418",
-      "handlers": [
-        {
-          "id": "asxcomau",
-          "enabled": true,
-          "url": "https://www.asx.com.au/markets/company/CQR"
-        },
-        {
-          "id": "dividendmax",
-          "enabled": true,
-          "url": "https://www.dividendmax.com/australia/australian-stock-exchange/real-estate-investment-trusts/charter-hall-retail-reit/dividends"
         }
       ]
     }
