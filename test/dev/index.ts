@@ -10,16 +10,17 @@ database.init();
 async function init() {
   const ticker: TickerModel = new TickerModel({
     id: "1",
-    symbol: "O",
+    symbol: "CQR",
+    updatedAt: new Date(),
   });
   ticker.tickerHandlers = {
     id: "1",
     tickerId: "1",
     handlers: [
       {
-        id: "dividendcom",
+        id: "dividendmax",
         enabled: true,
-        url: "https://www.dividend.com/stocks/communications/telecommunication/telecom-carriers/vz-verizon/",
+        url: "https://www.dividendmax.com/australia/australian-stock-exchange/real-estate-investment-trusts/charter-hall-retail-reit/dividends",
       },
     ],
   };
