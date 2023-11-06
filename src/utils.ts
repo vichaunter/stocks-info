@@ -1,4 +1,7 @@
 import dayjs, { Dayjs } from "dayjs";
+import getSystemLocale from "system-locale";
+
+getSystemLocale().then((locale) => dayjs.locale(locale));
 
 export const ucFirst = (str: string) =>
   str.slice(0, 1).toUpperCase() + str.slice(1);
