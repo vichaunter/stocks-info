@@ -1,7 +1,11 @@
 import dayjs, { Dayjs } from "dayjs";
 import getSystemLocale from "system-locale";
+import pc from "picocolors";
 
-getSystemLocale().then((locale) => dayjs.locale(locale));
+getSystemLocale().then((locale) => {
+  console.log(pc.bgYellow(`Locale system loaded: ${locale}`));
+  dayjs.locale(locale);
+});
 
 export const ucFirst = (str: string) =>
   str.slice(0, 1).toUpperCase() + str.slice(1);

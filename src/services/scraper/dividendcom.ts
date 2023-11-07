@@ -32,8 +32,6 @@ const parser = (source: string): Record<string, string> => {
   if (mapped["nextExDate"])
     mapped["nextExDate"] = formatDate(parseDate(mapped["nextExDate"]));
 
-  console.log({ mapped });
-
   return mapped;
 };
 

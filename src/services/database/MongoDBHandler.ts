@@ -112,7 +112,6 @@ class MongoDBDatabaseHandler extends DatabaseHandler {
 
       this.prisma.$transaction([update]);
 
-      console.log(pc.green(`${ticker.symbol} saved`));
       return true;
     } catch (e) {
       console.log(pc.red(e));

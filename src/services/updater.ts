@@ -33,7 +33,9 @@ const getTickerData = async (
   const source = await scraper.getPageSourceHtml(url, browserInstance);
   const parsed = parser.parser(source);
 
-  console.log(parsed, pc.blue(parser.name), pc.green(url));
+  console.log(pc.blue(parser.name), pc.green(url));
+  console.log(parsed);
+  console.log(``);
 
   return parsed;
 };
@@ -82,7 +84,13 @@ const updateTicker = async (item: QueueItem) => {
 
     browserInstance.close();
 
-    const saved = item.saveTicker();
+    const saved = await item.saveTicker();
+    if (saved) {
+      console.log(pc.green(`${item.symbol} saved`));
+    } else {
+      console.log(pc.red(`${item.symbol} error saving`));
+    }
+    console.log(`☰☰☰`);
   } catch (error) {
     console.log(pc.bgYellow("!! Skipping ticker"), { error });
   }
@@ -112,7 +120,10 @@ const tickerUpdaterService = async () => {
   // get ticker from the queue removing it
   const nextTicker = queue.shift();
   if (nextTicker?.symbol) {
+    console.log(``);
+    console.log(pc.white(`----`));
     console.log(pc.blue(`let's update the ticker: ${nextTicker.symbol}`));
+    console.log(pc.white(`----`));
 
     await updateTicker(nextTicker);
 
@@ -146,7 +157,7 @@ const loadStoredTickers = async () => {
   //pick older updated first
   tickers.sort((a, b) => (a.updatedAt as any) - (b.updatedAt as any));
 
-  console.log("TICKERS", tickers);
+  console.log("TICKERS", tickers.length);
 
   tickers.forEach((ticker) => {
     queue.push(ticker);

@@ -105,12 +105,12 @@ class TickerModel {
     return this;
   }
 
-  saveTicker() {
+  async saveTicker() {
     try {
       if (this.symbol && this.id && this.tickerData) {
-        database.saveTicker(this);
+        await database.saveTicker(this);
       }
-      console.log("saved ticker");
+
       return true;
     } catch (e) {
       console.log(pc.bgRed(`Problem writing ticker [${this.symbol}]`), e);
