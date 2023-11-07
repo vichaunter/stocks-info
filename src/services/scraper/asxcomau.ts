@@ -55,8 +55,6 @@ const parser = (source: string): Record<string, string> => {
     mapped[keyMap[k]] = data[k];
   });
 
-  console.log(mapped);
-  return;
   return mapped;
 };
 

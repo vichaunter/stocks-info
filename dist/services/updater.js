@@ -29,16 +29,23 @@ const updateTicker = async (item) => {
         const browserInstance = await scraper_1.default.getBrowserInstance();
         process.env.DEBUG &&
             console.log("updateTicker_handlers:", item.tickerHandlers.handlers);
-        const promises = item.tickerHandlers.handlers.map((handler) => {
+        const promises = item.tickerHandlers.handlers
+            .filter((h) => h.enabled) //remove disabled handlers
+            .map((handler) => {
             return new Promise(async (resolve, reject) => {
                 const parser = parsers?.[handler.id];
-                if (!handler.enabled || !parser || !handler.url)
-                    return reject();
-                const data = await getTickerData(handler.url, parser, browserInstance);
-                if (data) {
-                    return resolve({ key: parser.name, data });
+                if (!parser || !handler.url)
+                    return reject(new Error(`Missing parser or handler url for ${item.symbol}`));
+                try {
+                    const data = await getTickerData(handler.url, parser, browserInstance);
+                    if (data) {
+                        return resolve({ key: parser.name, data });
+                    }
+                    throw Error("Data not found");
                 }
-                return reject();
+                catch (error) {
+                    return reject(error);
+                }
             });
         });
         const response = await Promise.all(promises.flat());
@@ -48,11 +55,10 @@ const updateTicker = async (item) => {
             parsed.data && item.setData(parsed.data);
         });
         browserInstance.close();
-        return item.saveTicker();
+        const saved = item.saveTicker();
     }
-    catch (e) {
-        console.log(picocolors_1.default.bgYellow("!! Skipping ticker"));
-        console.log(e);
+    catch (error) {
+        console.log(picocolors_1.default.bgYellow("!! Skipping ticker"), { error });
     }
     return undefined;
 };

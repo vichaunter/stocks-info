@@ -5,14 +5,19 @@
   "main": "src/index.ts",
   "private": true,
   "scripts": {
+    "dev": "nodemon --watch \"src/**\" --ext \"ts,json\" --ignore \"src/**/*.spec.ts\" --exec \"DEV=true ts-node ./test/dev/index.ts\"",
     "start": "ts-node ./src/index.ts",
+    "services": "MODE=services yarn start",
     "build": "rimraf dist && yarn tsc",
     "ts:check": "yarn tsc --project tsconfig.json",
     "add-build": "git add dist",
     "test": "echo \"Error: no test specified\" && exit 1",
     "deploy": "sh ./scripts/deploy.sh",
     "db:generate": "yarn prisma generate",
-    "db:seed": "node ./database/seed/seed.js"
+    "db:seed": "node ./database/seed/seed.js",
+    "db:update": "node ./database/seed/updateHandlers.js",
+    "db:dump": "node ./database/seed/dumpDb.js",
+    "db:create": "node ./database/seed/createTickers.js"
   },
   "keywords": [
     "stocks",
@@ -39,11 +44,13 @@
     "picocolors": "^1.0.0",
     "puppeteer": "^21.2.1",
     "puppeteer-core": "^21.2.1",
-    "system-locale": "^0.1.0"
+    "system-locale": "^0.1.0",
+    "ramda": "^0.29.1"
   },
   "devDependencies": {
     "localtunnel": "^2.0.2",
     "ngrok": "^5.0.0-beta.2",
+    "nodemon": "^3.0.1",
     "pre-commit": "^1.2.2",
     "prisma": "^5.3.1",
     "rimraf": "^5.0.1",

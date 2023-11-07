@@ -17,7 +17,7 @@ const parser = (source) => {
     const $ = (0, cheerio_1.load)(source);
     const rows = [];
     const mapped = {};
-    $(".snapshot-table-wrapper table  tr").each((i, row) => {
+    $(".screener_snapshot-table-wrapper table  tr").each((i, row) => {
         const rowData = [];
         $(row)
             .find("td")

@@ -19,7 +19,15 @@ class TickerModel {
   symbol: string;
   updatedAt: Date;
   tickerHandlers: DbTickerHandlers;
-  tickerData: TickerData | null;
+  tickerData: TickerData | null = {
+    dividend: null,
+    dividendYield: null,
+    id: null,
+    nextExDate: null,
+    nextPayDate: null,
+    price: null,
+    tickerId: null,
+  };
 
   constructor(ticker: Ticker) {
     Object.assign(this, ticker);

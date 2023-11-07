@@ -68,9 +68,12 @@ class MongoDBDatabaseHandler extends DatabaseHandler_1.default {
     }
     async saveTicker(ticker) {
         try {
+            if (!ticker.tickerData.price)
+                throw Error(`Price missing for ticker ${ticker.symbol} Skipping...`);
             if (Object.keys(ticker.tickerData).length < 1)
                 throw Error(picocolors_1.default.yellow(`Data was not provider to save [${ticker}]`));
             const { id, tickerId, ...tickerDataWithoutId } = ticker.tickerData;
+            process.env.DEBUG && console.log("tickerData:", ticker.tickerData);
             const update = this.prisma.ticker.update({
                 where: { id: ticker.id },
                 data: {
@@ -98,7 +101,7 @@ class MongoDBDatabaseHandler extends DatabaseHandler_1.default {
             return true;
         }
         catch (e) {
-            console.log(e);
+            console.log(picocolors_1.default.red(e));
             return false;
         }
     }

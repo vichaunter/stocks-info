@@ -7,6 +7,15 @@ const picocolors_1 = __importDefault(require("picocolors"));
 const database_1 = __importDefault(require("../services/database"));
 class TickerModel {
     constructor(ticker) {
+        this.tickerData = {
+            dividend: null,
+            dividendYield: null,
+            id: null,
+            nextExDate: null,
+            nextPayDate: null,
+            price: null,
+            tickerId: null,
+        };
         Object.assign(this, ticker);
         this.updatedAt = new Date(ticker.updatedAt);
         return this;

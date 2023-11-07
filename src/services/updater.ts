@@ -44,22 +44,34 @@ const updateTicker = async (item: QueueItem) => {
 
     process.env.DEBUG &&
       console.log("updateTicker_handlers:", item.tickerHandlers.handlers);
-    const promises = item.tickerHandlers.handlers.map((handler) => {
-      return new Promise<{
-        key: string;
-        data: Record<string, string | string[]>;
-      }>(async (resolve, reject) => {
-        const parser = parsers?.[handler.id];
-        if (!handler.enabled || !parser || !handler.url) return reject();
+    const promises = item.tickerHandlers.handlers
+      .filter((h) => h.enabled) //remove disabled handlers
+      .map((handler) => {
+        return new Promise<{
+          key: string;
+          data: Record<string, string | string[]>;
+        }>(async (resolve, reject) => {
+          const parser = parsers?.[handler.id];
+          if (!parser || !handler.url)
+            return reject(
+              new Error(`Missing parser or handler url for ${item.symbol}`)
+            );
 
-        const data = await getTickerData(handler.url, parser, browserInstance);
-        if (data) {
-          return resolve({ key: parser.name, data });
-        }
-
-        return reject();
+          try {
+            const data = await getTickerData(
+              handler.url,
+              parser,
+              browserInstance
+            );
+            if (data) {
+              return resolve({ key: parser.name, data });
+            }
+            throw Error("Data not found");
+          } catch (error) {
+            return reject(error);
+          }
+        });
       });
-    });
 
     const response = await Promise.all(promises.flat());
     if (process.env.DEV) return response;
@@ -70,10 +82,9 @@ const updateTicker = async (item: QueueItem) => {
 
     browserInstance.close();
 
-    return item.saveTicker();
-  } catch (e) {
-    console.log(pc.bgYellow("!! Skipping ticker"));
-    console.log(e);
+    const saved = item.saveTicker();
+  } catch (error) {
+    console.log(pc.bgYellow("!! Skipping ticker"), { error });
   }
 
   return undefined;

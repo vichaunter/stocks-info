@@ -5,6 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.formatDate = exports.parseDate = exports.cleanNumber = exports.camelizeText = exports.ucFirstAll = exports.lcFirst = exports.ucFirst = void 0;
 const dayjs_1 = __importDefault(require("dayjs"));
+const system_locale_1 = __importDefault(require("system-locale"));
+(0, system_locale_1.default)().then((locale) => dayjs_1.default.locale(locale));
 const ucFirst = (str) => str.slice(0, 1).toUpperCase() + str.slice(1);
 exports.ucFirst = ucFirst;
 const lcFirst = (str) => str.slice(0, 1).toLowerCase() + str.slice(1);

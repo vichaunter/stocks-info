@@ -53,8 +53,6 @@ const parser = (source) => {
     Object.keys(keyMap).map((k) => {
         mapped[keyMap[k]] = data[k];
     });
-    console.log(mapped);
-    return;
     return mapped;
 };
 exports.default = {
