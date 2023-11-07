@@ -77,12 +77,11 @@ class TickerModel {
         this.tickerData = { ...this.tickerData, ...data };
         return this;
     }
-    saveTicker() {
+    async saveTicker() {
         try {
             if (this.symbol && this.id && this.tickerData) {
-                database_1.default.saveTicker(this);
+                await database_1.default.saveTicker(this);
             }
-            console.log("saved ticker");
             return true;
         }
         catch (e) {

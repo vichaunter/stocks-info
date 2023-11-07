@@ -24,12 +24,11 @@ const parser = (source) => {
     );
     mapped["nextPayDate"] = $(cells[1]).text();
     const nextExtCells = $(`div.t-flex.t-font-medium.t-text-xs.xl\\:t-mb-2`);
-    mapped["nextExDate"] = nextExtCells.text().replace("Ex-Date:", "").trim();
+    mapped["nextExDate"] = $(cells[3]).text(); //.replace("Ex-Date:", "").trim();
     if (mapped["nextPayDate"])
         mapped["nextPayDate"] = (0, utils_1.formatDate)((0, utils_1.parseDate)(mapped["nextPayDate"]));
     if (mapped["nextExDate"])
         mapped["nextExDate"] = (0, utils_1.formatDate)((0, utils_1.parseDate)(mapped["nextExDate"]));
-    console.log({ mapped });
     return mapped;
 };
 const tickerUrl = (ticker) => `${baseurl}/quote.ashx?t=${ticker}`;

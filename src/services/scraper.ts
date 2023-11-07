@@ -1,5 +1,7 @@
 import pc from "picocolors";
 import puppeteer, { Browser } from "puppeteer";
+import getSystemLocale from "system-locale";
+
 const USER_AGENTS = [
   // Chrome user agents
   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.61 Safari/537.36",
@@ -66,9 +68,10 @@ const getRandomAgent = () =>
   USER_AGENTS[Math.floor(Math.random() * USER_AGENTS.length) - 1];
 
 async function getBrowserInstance() {
+  const locale = await getSystemLocale();
   return await puppeteer.launch({
-    headless: true,
-    args: ["--no-sandbox"],
+    headless: "new",
+    args: ["--no-sandbox", `--lang=${locale}`],
   });
 }
 

@@ -97,7 +97,6 @@ class MongoDBDatabaseHandler extends DatabaseHandler_1.default {
                 },
             });
             this.prisma.$transaction([update]);
-            console.log(picocolors_1.default.green(`${ticker.symbol} saved`));
             return true;
         }
         catch (e) {

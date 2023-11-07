@@ -21,7 +21,9 @@ const queue = [];
 const getTickerData = async (url, parser, browserInstance) => {
     const source = await scraper_1.default.getPageSourceHtml(url, browserInstance);
     const parsed = parser.parser(source);
-    console.log(parsed, picocolors_1.default.blue(parser.name), picocolors_1.default.green(url));
+    console.log(picocolors_1.default.blue(parser.name), picocolors_1.default.green(url));
+    console.log(parsed);
+    console.log(``);
     return parsed;
 };
 const updateTicker = async (item) => {
@@ -55,7 +57,14 @@ const updateTicker = async (item) => {
             parsed.data && item.setData(parsed.data);
         });
         browserInstance.close();
-        const saved = item.saveTicker();
+        const saved = await item.saveTicker();
+        if (saved) {
+            console.log(picocolors_1.default.green(`${item.symbol} saved`));
+        }
+        else {
+            console.log(picocolors_1.default.red(`${item.symbol} error saving`));
+        }
+        console.log(`☰☰☰`);
     }
     catch (error) {
         console.log(picocolors_1.default.bgYellow("!! Skipping ticker"), { error });
@@ -84,7 +93,10 @@ const tickerUpdaterService = async () => {
     // get ticker from the queue removing it
     const nextTicker = queue.shift();
     if (nextTicker?.symbol) {
+        console.log(``);
+        console.log(picocolors_1.default.white(`----`));
         console.log(picocolors_1.default.blue(`let's update the ticker: ${nextTicker.symbol}`));
+        console.log(picocolors_1.default.white(`----`));
         await updateTicker(nextTicker);
         // let's do one each xx seconds
         await new Promise((resolve, reject) => {
@@ -110,7 +122,7 @@ const loadStoredTickers = async () => {
     const tickers = await tickerModel_1.default.getTickers();
     //pick older updated first
     tickers.sort((a, b) => a.updatedAt - b.updatedAt);
-    console.log("TICKERS", tickers);
+    console.log("TICKERS", tickers.length);
     tickers.forEach((ticker) => {
         queue.push(ticker);
     });

@@ -25,7 +25,7 @@ const parser = (source: string): Record<string, string> => {
 
   const nextExtCells = $(`div.t-flex.t-font-medium.t-text-xs.xl\\:t-mb-2`);
 
-  mapped["nextExDate"] = nextExtCells.text().replace("Ex-Date:", "").trim();
+  mapped["nextExDate"] = $(cells[3]).text(); //.replace("Ex-Date:", "").trim();
 
   if (mapped["nextPayDate"])
     mapped["nextPayDate"] = formatDate(parseDate(mapped["nextPayDate"]));
